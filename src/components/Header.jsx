@@ -6,7 +6,7 @@ const NavBar = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0 4%;
+  padding: 0 40px;
   background: var(--bg-color);
   height: 90px;
   display: flex;
@@ -14,10 +14,15 @@ const NavBar = styled.header`
   align-items: center;
   font-size: var(--fs-xs);
   font-family: "PT Mono", monospace;
+  z-index: 100;
   .logo {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
+  }
+
+  @media (max-width: 770px) {
+    padding: 0 20px;
   }
 `;
 
@@ -45,11 +50,11 @@ export default function Header() {
         <li>
           <a href="#experience">Experience</a>
         </li>
-        <li>
+        {/* <li>
           <a href="github.com/caykay" target="_blank">
             Projects
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="#contact">Contact</a>
         </li>

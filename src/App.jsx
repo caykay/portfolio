@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Main from "./components/content/Main";
 import Footer from "./components/Footer";
 import styled from "styled-components";
+import Sidebars from "./components/SideBars";
 
 const StyledApp = styled.div`
   display: flex;
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <Main />
       <Footer />
+      <Sidebars />
     </StyledApp>
   );
 }

@@ -1,5 +1,6 @@
 import Home from "./Home";
 import Contact from "./Contact";
+import AboutMe from "./AboutMe";
 import styled from "styled-components";
 
 const StyledMain = styled.main`
@@ -12,6 +13,7 @@ export default function Main(props) {
   return (
     <StyledMain>
       <Home />
+      <AboutMe />
       <Contact />
     </StyledMain>
   );

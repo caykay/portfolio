@@ -13,7 +13,7 @@ const StyledHeading = styled.div`
   color: var(--tertiary-color);
 `;
 
-const StlyedBtn = styled.button`
+const StyledBtn = styled.button`
   appearance: none;
   background-color: transparent;
   color: var(--primary-color);
@@ -29,4 +29,4 @@ const StlyedBtn = styled.button`
   }
 `;
 
-export { StyledTitle, StyledHeading, StlyedBtn };
+export { StyledTitle, StyledHeading, StyledBtn };
