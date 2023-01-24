@@ -6,6 +6,9 @@ import { useState } from "react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const StyledProjectsSection = styled.section`
+  margin: 0 auto;
+  max-width: 1000px;
+
   .projects-container {
     display: flex;
     flex-direction: column;
@@ -17,17 +20,19 @@ const StyledProjectItem = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
+  align-items: center;
 
   .project-item--image {
     border-radius: 5px;
     overflow: hidden;
     position: relative;
+    vertical-align: middle;
+    height: fit-content;
     img {
       width: 100%;
-      height: 100%;
-      // max-height: 350px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
-      vertical-align: middle;
+      display: block;
     }
 
     // veil to reduce image brightness
@@ -81,13 +86,13 @@ const StyledProjectItem = styled.div`
       background: var(--bg-color-secondary);
       padding: 20px;
       border-radius: 5px;
-      z-index: 3;
     }
 
     .project-item--info--tech-stack {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      column-gap: 20px;
+      row-gap: 10px;
       font-size: var(--fs-xs);
       font-family: "PT Mono", monospace;
       color: var(--secondary-color);
@@ -101,6 +106,10 @@ const StyledProjectItem = styled.div`
         font-size: var(--fs-xl);
       }
     }
+  }
+
+  .project-item--info :nth-child(1n) {
+    z-index: 3;
   }
 
   &:nth-child(odd) {
@@ -158,6 +167,11 @@ const StyledProjectItem = styled.div`
 
       .project-item--image {
         opacity: 0.3;
+        height: 100%;
+
+        img {
+          height: 100%;
+        }
 
         &:after {
           display: none;
@@ -180,10 +194,6 @@ const StyledProjectItem = styled.div`
           background: transparent;
           padding: 0;
         }
-      }
-
-      .project-item--info :nth-child(1n) {
-        z-index: 3;
       }
 
       .project-item--info::after {

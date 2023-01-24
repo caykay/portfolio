@@ -88,6 +88,12 @@ section {
   }
 }
 
+@media screen and (max-width: 450px) {
+  #root {
+    padding: 0 30px;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 20px;
 }

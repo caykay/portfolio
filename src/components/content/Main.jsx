@@ -18,6 +18,8 @@ const StyledMain = styled.main`
       content: "0" counter(section) ". ";
       color: var(--primary-color);
       font-family: "PT Mono", monospace;
+      // todo: implement in respective styled components
+      // font-size: var(--fs-xxl);
     }
   }
 `;

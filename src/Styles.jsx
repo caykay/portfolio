@@ -16,7 +16,7 @@ const StyledHeading = styled.div`
 
   ${(props) =>
     props.className === "section-title" &&
-    "font-size: clamp(1.625rem, 5vw,var(--fs-heading)); "}
+    "font-size: clamp(1.525rem, 4vw,var(--fs-heading)); "}
   ${(props) => props.subheading && "font-size: var(--fs-xxl);"}
 `;
 
