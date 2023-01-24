@@ -7,8 +7,9 @@ const NavBar = styled.header`
   left: 0;
   width: 100%;
   padding: 0 40px;
-  background: var(--bg-color);
-  height: 90px;
+  background: var(--bg-color-light);
+  backdrop-filter: blur(8px);
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,9 +32,15 @@ const NavLinks = styled.ol`
   gap: 40px;
   margin: 0;
   padding: 0;
-
+  list-style: none;
+  counter-reset: item 0;
   a {
     color: var(--secondary-color);
+    counter-increment: item 1;
+    &::before {
+      content: "0" counter(item) ".";
+      color: var(--primary-color);
+    }
   }
 `;
 
@@ -43,18 +50,14 @@ export default function Header() {
       <a href="/">
         <Logo className="logo" />
       </a>
-      <NavLinks className="nav-links" start="01">
+      <NavLinks className="nav-links">
         <li>
           <a href="#about">About</a>
         </li>
+
         <li>
-          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
         </li>
-        {/* <li>
-          <a href="github.com/caykay" target="_blank">
-            Projects
-          </a>
-        </li> */}
         <li>
           <a href="#contact">Contact</a>
         </li>

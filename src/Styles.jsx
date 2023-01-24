@@ -11,6 +11,13 @@ const StyledHeading = styled.div`
   font-size: var(--fs-heading);
   font-weight: 600;
   color: var(--tertiary-color);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+
+  ${(props) =>
+    props.className === "section-title" &&
+    "font-size: clamp(1.625rem, 5vw,var(--fs-heading)); "}
+  ${(props) => props.subheading && "font-size: var(--fs-xxl);"}
 `;
 
 const StyledBtn = styled.button`

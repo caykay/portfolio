@@ -1,4 +1,21 @@
 import { StyledBtn, StyledHeading } from "../../Styles";
+import styled from "styled-components";
+
+const StyledContact = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 10px;
+
+  .contact--title {
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 600;
+    color: var(--tertiary-color);
+  }
+`;
 
 export function ContactBtn({ btnText }) {
   return (
@@ -10,9 +27,9 @@ export function ContactBtn({ btnText }) {
 
 function Contact() {
   return (
-    <section id="contact">
-      <div>What's Next?</div>
-      <StyledHeading className="contact--title">Get in Touch</StyledHeading>
+    <StyledContact id="contact">
+      <div className="section-title">What's Next?</div>
+      <div className="contact--title">Get in Touch</div>
       <p
         style={{
           color: "var(--secondary-color)",
@@ -22,7 +39,7 @@ function Contact() {
         or if you would like to discuss potential job opportunities.
       </p>
       <ContactBtn btnText="Say Hello!" />
-    </section>
+    </StyledContact>
   );
 }
 

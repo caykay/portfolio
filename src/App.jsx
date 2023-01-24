@@ -7,15 +7,30 @@ import styled from "styled-components";
 import Sidebars from "./components/SideBars";
 
 const StyledApp = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  // flex-direction: column;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "main" "footer";
   gap: 100px;
+
+  // todo: delegate to actual components
+  main {
+    grid-area: main;
+  }
+
+  footer {
+    grid-area: footer;
+  }
 `;
 
 function App() {
   return (
     <StyledApp className="App">
       <Header />
+      {/* 
+      TODO: Add routes (when scaling up)
+      */}
       <Main />
       <Footer />
       <Sidebars />

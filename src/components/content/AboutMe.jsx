@@ -13,10 +13,10 @@ import { SiCsharp } from "react-icons/si";
 const StyledAboutMe = styled.section`
   display: flex;
   flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
 
-  //   height: 100vh;
-
-  gap: 20px;
+  // gap: 20px;
 
   .about--content {
     width: 100%;
@@ -88,7 +88,7 @@ const StyledAboutMe = styled.section`
 function AboutMe() {
   return (
     <StyledAboutMe id="about">
-      <StyledHeading>About Me</StyledHeading>
+      <StyledHeading className="section-title">About Me</StyledHeading>
       <AboutMeContent />
     </StyledAboutMe>
   );
