@@ -106,7 +106,7 @@ Error generating stack: `+o.message+`
   line-height: 1.1;
   margin-bottom: 1.5rem;
 
-  ${e=>e.className==="section-title"&&"font-size: clamp(1.625rem, 5vw,var(--fs-heading)); "}
+  ${e=>e.className==="section-title"&&"font-size: clamp(1.525rem, 4vw,var(--fs-heading)); "}
   ${e=>e.subheading&&"font-size: var(--fs-xxl);"}
 `,H0=He.button`
   appearance: none;
@@ -230,6 +230,9 @@ Error generating stack: `+o.message+`
     }
   }
 `;function a2(){return q(u2,{id:"about",children:[x(Xl,{className:"section-title",children:"About Me"}),x(s2,{})]})}function s2(){return q("div",{className:"about--content",children:[q("div",{className:"about--text",children:[q("p",{children:["Hello there, My name is Cassian Kahema, a recent software engineering graduate from the"," ",x("a",{href:"https://www.unisa.edu.au/",target:"_blank",children:"University of South Australia"}),". Watching Hacking and Cyber Security Movies and TV Shows like"," ",x("a",{href:"https://en.wikipedia.org/wiki/Nikita_(TV_series)",target:"_blank",children:"Nikita"})," ","when I was young is what inspired me to pursue a developer career."]}),x("p",{children:"As a problem solver at heart I have always tried to find solutions to some of the problems that I had been facing as a student. After graduating I started a web development journey to help me bring my ideas and solutions to life."}),q("p",{children:["I have recently been exploring the backend and hoping to soon deploy microservices that could be used in areas like gaming and surveillance cameras, If this interests you and you wish to collaborate feel free to reach out through any of my ",x("a",{href:"#contact",children:"contacts"}),"."]}),q("p",{children:["I am currently looking for a full-time position as a software developer and I am excited to bring my knowledge and expertise to any project in the web development field."," "]}),x("p",{children:"Tech Stack and Technologies (recent):"}),x("ul",{className:"about--tech-stack",children:[{name:"JavaScript",icon:x(e2,{})},{name:"React",icon:x(l2,{})},{name:"NodeJs",icon:x(n2,{})},{name:"Python",icon:x(r2,{})},{name:"C#",icon:x(i2,{})},{name:"Github",icon:x(q0,{})},{name:"Figma",icon:x(Z0,{})}].map(t=>q("li",{children:[t.icon,x("span",{children:t.name})]},t.name))})]}),x("div",{className:"about--photo"})]})}const c2="/assets/algo-simulator-3041f8a7.png",f2="/assets/meme-generator-5c8f45b6.png",d2="/assets/vrpathway-12396820.jpeg",p2=[{title:"VRPathways Tool",description:q("p",{style:{margin:"0"},children:["A project in collaboration with researchers from the"," ",x("b",{children:"Commonwealth Scientific and Industrial Research Organisation"})," (",x("a",{href:"https://www.csiro.au/en/",target:"_blank",children:"CSIRO"}),") and the University of South Australia. The tool will be used to analyse and monitor potential bio-markers for ",x("b",{children:"Alzheimer's disease"})," ","in the human saliva in ",x("b",{children:"Virtual Reality (VR)"}),"."]}),image:d2,repo:"https://github.com/caykay/VRPathwayTool",url:"",techStack:["C#","Unity","VR","Metabolic-Pathways","Data","CSIRO"]},{title:"Algo Simulator",description:q(hu,{children:[x("p",{style:{margin:0},children:"A web application that simulates the various graph search algorithms on a grid. This has always been a project I wanted to work on even before getting farmiliar with web development as I am a visual learner and so I figured such project would help to give insight in some algorithm concepts."}),x("br",{}),q("span",{children:[x("b",{children:"Current Algorithms"}),": Loop Iteration, BFS, DFS, Dijkstra, A*"]})]}),image:c2,repo:"https://github.com/WebDvProjects/Graph-Search-simulator",url:"https://webdvprojects.github.io/Graph-Search-simulator/",techStack:["Javascript","CSS","Algorithms"]},{title:"Meme Generator",description:"A web application that generates memes from an image using a public API and custom text. This was a project I worked on to get more familiar with React and the React ecosystem.",image:f2,repo:"https://github.com/WebDvProjects/meme-generator",url:"https://webdvprojects.github.io/meme-generator/",techStack:["React","Javascript","CSS","API"]}];function h2(e){return Be({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"path",attr:{d:"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"}},{tag:"polyline",attr:{points:"15 3 21 3 21 9"}},{tag:"line",attr:{x1:"10",y1:"14",x2:"21",y2:"3"}}]})(e)}function m2(e){return Be({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"path",attr:{d:"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"}}]})(e)}function js(){const{innerWidth:e,innerHeight:t}=window;return{width:e,height:t}}function v2(){const[e,t]=rt.useState(()=>js());return rt.useEffect(()=>{function n(){t(js())}return window.addEventListener("resize",n),()=>window.removeEventListener("resize",n)},[]),e}const g2=He.section`
+  margin: 0 auto;
+  max-width: 1000px;
+
   .projects-container {
     display: flex;
     flex-direction: column;
@@ -239,17 +242,19 @@ Error generating stack: `+o.message+`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
+  align-items: center;
 
   .project-item--image {
     border-radius: 5px;
     overflow: hidden;
     position: relative;
+    vertical-align: middle;
+    height: fit-content;
     img {
       width: 100%;
-      height: 100%;
-      // max-height: 350px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
-      vertical-align: middle;
+      display: block;
     }
 
     // veil to reduce image brightness
@@ -303,13 +308,13 @@ Error generating stack: `+o.message+`
       background: var(--bg-color-secondary);
       padding: 20px;
       border-radius: 5px;
-      z-index: 3;
     }
 
     .project-item--info--tech-stack {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      column-gap: 20px;
+      row-gap: 10px;
       font-size: var(--fs-xs);
       font-family: "PT Mono", monospace;
       color: var(--secondary-color);
@@ -323,6 +328,10 @@ Error generating stack: `+o.message+`
         font-size: var(--fs-xl);
       }
     }
+  }
+
+  .project-item--info :nth-child(1n) {
+    z-index: 3;
   }
 
   &:nth-child(odd) {
@@ -380,6 +389,11 @@ Error generating stack: `+o.message+`
 
       .project-item--image {
         opacity: 0.3;
+        height: 100%;
+
+        img {
+          height: 100%;
+        }
 
         &:after {
           display: none;
@@ -402,10 +416,6 @@ Error generating stack: `+o.message+`
           background: transparent;
           padding: 0;
         }
-      }
-
-      .project-item--info :nth-child(1n) {
-        z-index: 3;
       }
 
       .project-item--info::after {
@@ -434,6 +444,8 @@ Error generating stack: `+o.message+`
       content: "0" counter(section) ". ";
       color: var(--primary-color);
       font-family: "PT Mono", monospace;
+      // todo: implement in respective styled components
+      // font-size: var(--fs-xxl);
     }
   }
 `;function C2(e){return q(k2,{children:[x(G0,{}),x(a2,{}),x(S2,{}),x(W0,{})]})}const x2=He.footer`
