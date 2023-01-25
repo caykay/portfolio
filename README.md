@@ -13,12 +13,15 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
   - a veil that pops out when menu is active
   - veil dissappears when menu is not longer active
 
-- Smooth scrolling on clicking nav links
+- ~~Smooth scrolling on clicking nav links~~
 
 - Nav bar animation
 
-- Footer (tech used)
+- ~~Footer (tech used)~~
 
 - Animations :
+
   - Page load (logo animation)
   - components load
+
+- Different logo sizes and variation

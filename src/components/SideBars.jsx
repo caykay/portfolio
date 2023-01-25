@@ -24,10 +24,6 @@ const StyledSideBar = styled.div`
     ${(props) => (props.position === "left" ? "left: 30px; " : "right: 30px; ")}
   }
 
-  @media (max-width: 450px) {
-    display: none;
-  }
-
   a {
     color: var(--secondary-color);
     display: inline-block;
@@ -55,6 +51,7 @@ const StyledSideBar = styled.div`
   }
 
   svg {
+    font-size: var(--fs-xl);
     cursor: pointer;
     rotate: -90deg;
   }
@@ -62,6 +59,25 @@ const StyledSideBar = styled.div`
   .email {
     font-size: var(--fs-md);
     font-family: "PT Mono", monospace;
+  }
+
+  @media (max-width: 500px) {
+    ${(props) => props.position === "right" && "display: none;"}
+
+    // fix position when screen is too small
+    ${(props) =>
+      props.position === "left" &&
+      "position: relative;\
+      left:auto;bottom: auto; transform:translateX(0%);\
+      .sidebar--wrapper{\
+        rotate: 0deg;\
+        transform: translate(0%, 0%);\
+      };\
+      .sidebar--wrapper::after {display: none;}\
+      svg {rotate: 0deg;}\
+      a:hover {\
+        transform: translateY(-5px);\
+      }"}
   }
 `;
 

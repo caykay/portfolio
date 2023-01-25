@@ -81,6 +81,10 @@ const StyledAboutMe = styled.section`
 
     @media (max-width: 770px) {
       grid-template-columns: 1fr;
+      .about--photo {
+        width: clamp(250px, 50%, 350px);
+        margin: 0 auto;
+      }
     }
   }
 `;
@@ -125,20 +129,21 @@ function AboutMeContent() {
           As a problem solver at heart I have always tried to find solutions to
           some of the problems that I had been facing as a student. After
           graduating I started a web development journey to help me bring my
-          ideas and solutions to life.
+          ideas and solutions to life. I have been learning about the frontend
+          and the backend.
         </p>
-        <p>
+        {/* <p>
           I have recently been exploring the backend and hoping to soon deploy
           microservices that could be used in areas like gaming and surveillance
           cameras, If this interests you and you wish to collaborate feel free
           to reach out through any of my <a href="#contact">contacts</a>.
-        </p>
+        </p> */}
         <p>
           I am currently looking for a full-time position as a software
           developer and I am excited to bring my knowledge and expertise to any
           project in the web development field.{" "}
         </p>
-        <p>Tech Stack and Technologies (recent):</p>
+        <p>Tech Stack and Technologies (competent):</p>
         <ul className="about--tech-stack">
           {techStack.map((tech) => (
             <li key={tech.name}>

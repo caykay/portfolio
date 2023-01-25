@@ -23,6 +23,11 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   height: 100vh;
   margin: 0;
@@ -31,7 +36,6 @@ body {
   font-size: var(--fs-xl);
 
   overflow: overlay;
-  scroll-behavior: smooth;
   overscroll-behavior: none;
 
   line-height: 1.5;
