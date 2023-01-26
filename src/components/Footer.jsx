@@ -44,6 +44,14 @@ const StyledFooter = styled.footer`
       display: none;
     }
   }
+
+  // disable shawdow on hover when screen is too small (safari gets buggy)
+  @media Screen and (max-width: 500px), (max-height: 500px) {
+    .logo-react:hover,
+    .logo-vite:hover {
+      filter: none;
+    }
+  }
 `;
 
 function Footer() {

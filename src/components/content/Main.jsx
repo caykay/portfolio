@@ -16,15 +16,16 @@ const StyledMain = styled.main`
     counter-increment: section 1;
     &::before {
       content: "0" counter(section) ". ";
-      color: var(--primary-color);
+      color: var(--primary-color);s
       font-family: "PT Mono", monospace;
       // todo: implement in respective styled components
       // font-size: var(--fs-xxl);
     }
   }
+
 `;
 
-export default function Main(props) {
+export default function Main() {
   return (
     <StyledMain>
       <Home />

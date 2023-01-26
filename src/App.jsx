@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { MenuActiveContext } from "./context/MenuActiveContext";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/content/Main";
@@ -24,9 +26,26 @@ const StyledApp = styled.div`
 `;
 
 function App() {
+  const [menuActive, setMenuActive] = useState(false);
+  const { width } = useWindowDimensions();
+
+  function toggleMenu() {
+    setMenuActive(!menuActive);
+    console.log("click");
+  }
+
+  // close menu on window resize
+  useEffect(() => {
+    if (width > 770) {
+      setMenuActive(false);
+    }
+  }, [width]);
+
   return (
     <StyledApp className="App">
-      <Header />
+      <MenuActiveContext.Provider value={[menuActive, toggleMenu]}>
+        <Header />
+      </MenuActiveContext.Provider>
       {/* 
       TODO: Add routes (when scaling up)
       */}
