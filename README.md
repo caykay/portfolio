@@ -8,10 +8,10 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 
 ## TODO
 
-- hamburger menu for small screen sizes
+- ~~hamburger menu for small screen sizes~~
 
-  - a veil that pops out when menu is active
-  - veil dissappears when menu is not longer active
+  - ~~a veil that pops out when menu is active~~
+  - ~~veil dissappears when menu is not longer active~~
 
 - ~~Smooth scrolling on clicking nav links~~
 
@@ -25,3 +25,5 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
   - components load
 
 - Different logo sizes and variation
+
+- Light/Dark Mode Switch

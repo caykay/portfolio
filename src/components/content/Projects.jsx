@@ -28,36 +28,44 @@ const StyledProjectItem = styled.div`
     position: relative;
     vertical-align: middle;
     height: fit-content;
+
     img {
       width: 100%;
       aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
+      filter: grayscale(100%) contrast(1) brightness(90%);
     }
 
-    // veil to reduce image brightness
-    &::after {
+    a {
+      display: inline-block;
+      background-color: var(--primary-color);
+      position: relative;
+      height: 100%;
+      width: 100%;
+      z-index: 1; // so that the link can be clicked
+    }
+
+    a::before {
       content: "";
-      display: block;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: #0a192f;
+      mix-blend-mode: screen;
       z-index: 2;
-      pointer-events: none; // so that the link can be clicked
     }
 
-    &:hover::after {
-      background: rgba(0, 0, 0, 0.2);
-    }
-
-    a {
-      position: relative;
-      height: 100%;
-      width: 100%;
-      z-index: 1; // so that the link can be clicked
+    a:hover {
+      img {
+        filter: grayscale(0%) contrast(1) brightness(100%);
+      }
+      &::before {
+        background: transparent;
+        // mix-blend-mode: normal;
+      }
     }
   }
 

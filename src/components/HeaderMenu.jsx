@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { MenuActiveContext } from "../context/MenuActiveContext";
 import styled from "styled-components";
 import MenuIcon from "./MenuIcon";
@@ -20,10 +20,6 @@ const StyledLinks = styled.ol`
       color: var(--primary-color);
     }
   }
-
-  ${(props) =>
-    props.menuActive &&
-    "flex-direction:column; align-items: center;font-size:var(--fs-lg); a {flex-direction: column; align-items: center;} "}
 `;
 
 const StlyedPopupMenu = styled.aside`
@@ -34,8 +30,34 @@ const StlyedPopupMenu = styled.aside`
   padding-top: calc(40px + var(--header-height));
   height: 100vh;
   width: 50%;
-  background: #112240;
+  background: var(--popup-menu-bg, #112240);
   z-index: 2;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--fs-lg);
+    a {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    background: var(--bg-color);
+    .nav-links {
+      a {
+        color: var(--tertiary-color);
+      }
+    }
+  }
+
+  ${(props) =>
+    props.menuActive && "transform: translateX(0); visibility: visible;"}
 `;
 
 const StyledVeil = styled.div`
@@ -48,49 +70,59 @@ const StyledVeil = styled.div`
   z-index: 1;
 `;
 
-function NavLinks({ menuActive }) {
+function NavLinks({ menuActive, handleLinkClick }) {
+  const links = ["about", "projects", "contact"];
   return (
     <StyledLinks className="nav-links" menuActive={menuActive || false}>
-      <li>
-        <a href="#about">About</a>
-      </li>
-
-      <li>
-        <a href="#projects">Projects</a>
-      </li>
-      <li>
-        <a href="#contact">Contact</a>
-      </li>
+      {links &&
+        links.map((link) => (
+          <li key={link}>
+            <a href={`#${link}`} onClick={handleLinkClick}>
+              {link[0].toUpperCase() + link.slice(1)}
+            </a>
+          </li>
+        ))}
     </StyledLinks>
   );
 }
 
-function PopupMenu({ toggleMenu }) {
+function PopupMenu({ toggleMenu, windowWidth, menuActive }) {
+  // Close menu on mobile when link is clicked
+  function handleLinkClicked() {
+    console.log("link clicked");
+    windowWidth <= 500 && toggleMenu();
+  }
   return (
     <>
-      <StlyedPopupMenu>
-        <NavLinks menuActive={true} />
+      <StlyedPopupMenu menuActive={menuActive}>
+        <NavLinks menuActive={menuActive} handleLinkClick={handleLinkClicked} />
       </StlyedPopupMenu>
-      <StyledVeil className="veil" onClick={toggleMenu}></StyledVeil>{" "}
+      {menuActive && (
+        <StyledVeil className="veil" onClick={toggleMenu}></StyledVeil>
+      )}
     </>
   );
 }
 
-function MenuContainer({ width }) {
-  const [active, toggleMenu] = useContext(MenuActiveContext);
+function MenuContainer() {
+  const [menuActive, toggleMenu, windowWidth] = useContext(MenuActiveContext);
 
   return (
     <>
-      {width > 770 ? (
+      {windowWidth > 770 ? (
         <NavLinks />
       ) : (
         <>
           <MenuIcon
             className="menu-icon"
             handleClick={toggleMenu}
-            menuActive={active}
+            menuActive={menuActive}
           />
-          {active && <PopupMenu toggleMenu={toggleMenu} />}
+          <PopupMenu
+            menuActive={menuActive}
+            toggleMenu={toggleMenu}
+            windowWidth={windowWidth}
+          />
         </>
       )}
     </>

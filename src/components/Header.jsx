@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Logo from "./Logo";
 import HeaderMenu from "./HeaderMenu";
-import { useState, useContext } from "react";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import { useContext } from "react";
 import { MenuActiveContext } from "../context/MenuActiveContext";
 
 const NavBar = styled.header`
@@ -30,19 +29,24 @@ const NavBar = styled.header`
     padding: 0 20px;
   }
 
+  @media (max-width: 500px) {
+    .logo-link {
+      z-index: 3;
+    }
+  }
+
   // ${(props) => props.menuActive && "background: #112240;"}
 `;
 
 export default function Header() {
-  const windowDimensions = useWindowDimensions();
   const [menuActive] = useContext(MenuActiveContext);
 
   return (
     <NavBar menuActive={menuActive}>
-      <a href="/">
+      <a href="/" className="logo-link">
         <Logo className="logo" />
       </a>
-      <HeaderMenu width={windowDimensions.width} />
+      <HeaderMenu />
     </NavBar>
   );
 }

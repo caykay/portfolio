@@ -23,6 +23,8 @@ const StyledApp = styled.div`
   footer {
     grid-area: footer;
   }
+
+  // ${({ menuActive }) => menuActive && "max-height:100vh;"}
 `;
 
 function App() {
@@ -39,18 +41,24 @@ function App() {
     if (width > 770) {
       setMenuActive(false);
     }
-  }, [width]);
+
+    // disable scroll when menu is active (most effective in mobile)
+    if (menuActive) document.querySelector("body").classList.add("no-scroll");
+    else document.querySelector("body").classList.remove("no-scroll");
+  }, [width, menuActive]);
 
   return (
-    <StyledApp className="App">
-      <MenuActiveContext.Provider value={[menuActive, toggleMenu]}>
+    <StyledApp className="App" menuActive={menuActive}>
+      <MenuActiveContext.Provider value={[menuActive, toggleMenu, width]}>
         <Header />
       </MenuActiveContext.Provider>
       {/* 
       TODO: Add routes (when scaling up)
       */}
-      <Main />
-      <Footer />
+      <MenuActiveContext.Provider value={[menuActive]}>
+        <Main />
+        <Footer />
+      </MenuActiveContext.Provider>
     </StyledApp>
   );
 }
