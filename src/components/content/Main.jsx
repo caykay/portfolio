@@ -16,13 +16,12 @@ const StyledMain = styled.main`
     counter-increment: section 1;
     &::before {
       content: "0" counter(section) ". ";
-      color: var(--primary-color);s
+      color: var(--primary-color);
       font-family: "PT Mono", monospace;
       // todo: implement in respective styled components
       // font-size: var(--fs-xxl);
     }
   }
-
 `;
 
 export default function Main() {

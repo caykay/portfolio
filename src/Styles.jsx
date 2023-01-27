@@ -14,6 +14,10 @@ const StyledHeading = styled.div`
   line-height: 1.1;
   margin-bottom: 1.5rem;
 
+  &::before {
+    font-size: var(--fs-xxl);
+  }
+
   ${(props) =>
     props.className === "section-title" &&
     "font-size: clamp(1.525rem, 4vw,var(--fs-heading)); "}
