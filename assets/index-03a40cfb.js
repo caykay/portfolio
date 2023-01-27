@@ -225,6 +225,10 @@ Error generating stack: `+i.message+`
   line-height: 1.1;
   margin-bottom: 1.5rem;
 
+  &::before {
+    font-size: var(--fs-xxl);
+  }
+
   ${e=>e.className==="section-title"&&"font-size: clamp(1.525rem, 4vw,var(--fs-heading)); "}
   ${e=>e.subheading&&"font-size: var(--fs-xxl);"}
 `,J0=Pe.button`
@@ -577,13 +581,12 @@ Error generating stack: `+i.message+`
     counter-increment: section 1;
     &::before {
       content: "0" counter(section) ". ";
-      color: var(--primary-color);s
+      color: var(--primary-color);
       font-family: "PT Mono", monospace;
       // todo: implement in respective styled components
       // font-size: var(--fs-xxl);
     }
   }
-
 `;function L2(){return K(T2,{children:[w(t2,{}),w(g2,{}),w(N2,{}),w(b0,{})]})}const Ds=Pe.div`
   position: fixed;
   bottom: 0;
