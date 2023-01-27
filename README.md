@@ -12,6 +12,7 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 
   - ~~a veil that pops out when menu is active~~
   - ~~veil dissappears when menu is not longer active~~
+  - ~~Menu icon animation~~
 
 - ~~Smooth scrolling on clicking nav links~~
 

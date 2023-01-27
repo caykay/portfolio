@@ -22,6 +22,10 @@ const StyledHome = styled.section`
     color: var(--secondary-color);
     max-width: 520px;
   }
+
+  @media (max-height: 500px) {
+    height: auto;
+  }
 `;
 
 export default function Home(props) {
