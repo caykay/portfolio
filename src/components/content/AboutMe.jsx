@@ -1,5 +1,4 @@
-import { StyledHeading } from "../../Styles";
-import styled from "styled-components";
+import { StyledHeading, StyledAboutMe } from "../../styles/Styles";
 import {
   FaPython,
   FaGithub,
@@ -9,85 +8,6 @@ import {
   FaNodeJs,
 } from "react-icons/fa";
 import { SiCsharp } from "react-icons/si";
-
-const StyledAboutMe = styled.section`
-  display: flex;
-  flex-direction: column;
-  max-width: 900px;
-  margin: 0 auto;
-
-  // gap: 20px;
-
-  .about--content {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: auto;
-    gap: 50px;
-    justify-items: space-between;
-
-    .about--photo {
-      min-width: 250px;
-      max-width: 350px;
-      aspect-ratio: 1;
-      border-radius: 10px;
-      background: url(/prof_pic.jpg) no-repeat center center / cover;
-      position: relative;
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: inherit;
-        border: 3px solid var(--primary-color);
-        transform: translate(5%, 5%);
-        transition: transform 0.2s ease-in-out;
-        z-index: -1;
-      }
-
-      &:hover::after {
-        transform: translate(2.5%, 2.5%);
-      }
-    }
-
-    .about--text {
-      color: var(--secondary-color);
-      min-width: 300px;
-      max-width: 600px;
-    }
-
-    .about--tech-stack {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      row-gap: 10px;
-      list-style: none;
-      font-size: var(--fs-xs);
-      padding: 0;
-
-      li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        svg {
-          fill: var(--primary-color);
-          font-size: var(--fs-md);
-        }
-      }
-    }
-
-    @media (max-width: 770px) {
-      grid-template-columns: 1fr;
-      .about--photo {
-        width: clamp(250px, 50%, 350px);
-        margin: 0 auto;
-      }
-    }
-  }
-`;
 
 function AboutMe() {
   return (

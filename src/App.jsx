@@ -1,31 +1,11 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MenuActiveContext } from "./context/MenuActiveContext";
 import useWindowDimensions from "./hooks/useWindowDimensions";
-import "./App.css";
+import { GlobalStyles } from "./styles/GlobalStyles";
 import Header from "./components/Header";
 import Main from "./components/content/Main";
 import Footer from "./components/Footer";
-import styled from "styled-components";
-
-const StyledApp = styled.div`
-  display: grid;
-  // flex-direction: column;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  grid-template-areas: "main" "footer";
-  gap: 100px;
-
-  // todo: delegate to actual components
-  main {
-    grid-area: main;
-  }
-
-  footer {
-    grid-area: footer;
-  }
-
-  // ${({ menuActive }) => menuActive && "max-height:100vh;"}
-`;
+import { StyledApp } from "./styles/Styles";
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
@@ -48,18 +28,22 @@ function App() {
   }, [width, menuActive]);
 
   return (
-    <StyledApp className="App" menuActive={menuActive}>
-      <MenuActiveContext.Provider value={[menuActive, toggleMenu, width]}>
-        <Header />
-      </MenuActiveContext.Provider>
-      {/* 
+    // todo: pass in a context provider for the dark/light theme
+    <>
+      <GlobalStyles />
+      <StyledApp className="App" menuActive={menuActive}>
+        <MenuActiveContext.Provider value={[menuActive, toggleMenu, width]}>
+          <Header />
+        </MenuActiveContext.Provider>
+        {/* 
       TODO: Add routes (when scaling up)
       */}
-      <MenuActiveContext.Provider value={[menuActive]}>
-        <Main />
-        <Footer />
-      </MenuActiveContext.Provider>
-    </StyledApp>
+        <MenuActiveContext.Provider value={[menuActive]}>
+          <Main />
+          <Footer />
+        </MenuActiveContext.Provider>
+      </StyledApp>
+    </>
   );
 }
 

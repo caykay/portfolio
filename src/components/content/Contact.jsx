@@ -1,21 +1,4 @@
-import { StyledBtn, StyledHeading } from "../../Styles";
-import styled from "styled-components";
-
-const StyledContact = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  gap: 10px;
-
-  .contact--title {
-    font-size: clamp(40px, 5vw, 60px);
-    font-weight: 600;
-    color: var(--tertiary-color);
-  }
-`;
+import { StyledBtn, StyledContact } from "../../styles/Styles";
 
 export function ContactBtn({ btnText }) {
   return (
