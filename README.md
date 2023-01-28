@@ -28,3 +28,6 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 - Different logo sizes and variation
 
 - Light/Dark Mode Switch
+
+- Project clean up
+  - migrate large css to chunks of styled components

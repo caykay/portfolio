@@ -26,24 +26,27 @@ const StyledProjectItem = styled.div`
     border-radius: 5px;
     overflow: hidden;
     position: relative;
-    vertical-align: middle;
     height: fit-content;
-
-    img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(100%) contrast(1) brightness(90%);
-    }
+    box-shadow: 0px 10px 0.875rem -0.5rem rgba(0, 0, 0, 1);
 
     a {
-      display: inline-block;
-      background-color: var(--primary-color);
-      position: relative;
-      height: 100%;
       width: 100%;
+      height: 100%;
+      max-width: 100%;
+      display: inline-block;
+      background: linear-gradient(0.4turn, #64ffda, var(--primary-color));
+      position: relative;
       z-index: 1; // so that the link can be clicked
+      vertical-align: middle;
+
+      img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(100%) contrast(1) brightness(80%);
+        mix-blend-mode: multiply;
+      }
     }
 
     a::before {
@@ -57,14 +60,16 @@ const StyledProjectItem = styled.div`
       mix-blend-mode: screen;
       z-index: 2;
     }
-
-    a:hover {
-      img {
-        filter: grayscale(0%) contrast(1) brightness(100%);
-      }
-      &::before {
-        background: transparent;
-        // mix-blend-mode: normal;
+    @media screen and (min-width: 770px) {
+      a:hover {
+        img {
+          filter: grayscale(0%) contrast(1);
+          mix-blend-mode: normal;
+        }
+        &::before {
+          background: transparent;
+          // mix-blend-mode: normal;
+        }
       }
     }
   }
@@ -88,8 +93,7 @@ const StyledProjectItem = styled.div`
 
     .project-item--info--description {
       max-width: 500px;
-      // text-align: justify; // todo: remove this
-      font-size: var(--fs-sm);
+      // font-size: var(--fs-md);
       color: var(--secondary-color);
       background: var(--bg-color-secondary);
       padding: 20px;
@@ -141,7 +145,7 @@ const StyledProjectItem = styled.div`
   &:nth-child(even) {
     .project-item--info {
       grid-column: 1 / 4;
-      grid-row: 1 / 2;
+      grid-row: 1 / -1;
       align-items: flex-start;
       text-align: left;
 
@@ -152,7 +156,7 @@ const StyledProjectItem = styled.div`
 
     .project-item--image {
       grid-column: 3 / 6;
-      grid-row: 1 / 2;
+      grid-row: 1 / -1;
     }
   }
 
@@ -163,34 +167,33 @@ const StyledProjectItem = styled.div`
   @media screen and (max-width: 770px) {
     grid-template-columns: 1fr;
     border-radius: 5px;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
 
     &:nth-child(1n) {
       .project-item--image,
       .project-item--info {
         grid-column: 1 / 6;
-        grid-row: 1 / 2;
+        grid-row: 1 / -1;
       }
 
       .project-item--image {
-        opacity: 0.3;
+        opacity: 0.25;
         height: 100%;
+        box-shadow: 0 0.5rem 0.9rem -0.3rem #000000,
+          0 -0.3rem 0.9rem -0.3rem #000000;
 
-        img {
+        a img {
           height: 100%;
-        }
-
-        &:after {
-          display: none;
+          filter: grayscale(100%) contrast(1) brightness(50%);
         }
       }
 
       .project-item--info {
         align-items: flex-start;
         text-align: left;
-        padding: 60px 30px;
-        margin: 0 auto;
+        padding: 50px 40px 30px;
+        // margin: 0 auto;
 
         .project-item--info--header {
           a:hover .project-item--info--header--link-heading {
@@ -198,6 +201,7 @@ const StyledProjectItem = styled.div`
           }
         }
         .project-item--info--description {
+          max-width: 100%;
           text-align: left;
           background: transparent;
           padding: 0;
@@ -211,7 +215,7 @@ const StyledProjectItem = styled.div`
         left: 0;
         bottom: 0;
         right: 0;
-        background: var(--bg-color-secondary-light);
+        // background: var(--bg-color-secondary-light);
         pointer-events: none;
       }
     }

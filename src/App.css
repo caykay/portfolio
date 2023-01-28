@@ -24,7 +24,9 @@
   --header-height: 70px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 

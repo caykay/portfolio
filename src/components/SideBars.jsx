@@ -5,6 +5,7 @@ import {
   FaDiscord,
   FaInstagram,
   FaTwitter,
+  FaCodepen,
 } from "react-icons/fa";
 
 const StyledSideBar = styled.div`
@@ -88,12 +89,13 @@ function SideBars() {
       link: "https://www.linkedin.com/in/cassian-kahema/",
       icon: <FaLinkedin />,
     },
-    {
-      link: "https://discordapp.com/users/558883203872587786/",
-      icon: <FaDiscord />,
-    },
+    // {
+    //   link: "https://discordapp.com/users/558883203872587786/",
+    //   icon: <FaDiscord />,
+    // },
     { link: "https://www.instagram.com/_.cassian/", icon: <FaInstagram /> },
     { link: "https://twitter.com/caykay2", icon: <FaTwitter /> },
+    { link: "https://codepen.io/caykay", icon: <FaCodepen /> },
   ];
   return (
     <>

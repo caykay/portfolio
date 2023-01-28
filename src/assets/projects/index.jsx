@@ -57,6 +57,14 @@ const featured = [
     url: "https://webdvprojects.github.io/meme-generator/",
     techStack: ["React", "Javascript", "CSS", "API"],
   },
+  {
+    title: "Todo List App",
+    description: "A todo list app. Stores your lists in local storage.",
+    image: todoApp,
+    repo: "https://github.com/WebDvProjects/TodoApp",
+    url: "https://webdvprojects.github.io/TodoApp/",
+    techStack: ["Javascript", "Webpack", "CSS"],
+  },
 ];
 
 const otherProjects = [
@@ -67,7 +75,7 @@ const otherProjects = [
     image: undefined,
     repo: "https://github.com/WebDvProjects/TicTacToe",
     url: "https://webdvprojects.github.io/TicTacToe/",
-    tech: ["Javascript", "CSS", "HTML"],
+    techStack: ["Javascript", "CSS", "HTML"],
   },
   {
     title: "Tenzies",
@@ -75,7 +83,7 @@ const otherProjects = [
     image: tenzies,
     repo: "https://github.com/WebDvProjects/tenzies-app",
     url: "https://webdvprojects.github.io/tenzies-app/",
-    tech: ["React", "Javascript", "Vite", "CSS", "HTML"],
+    techStack: ["React", "Javascript", "Vite", "CSS", "HTML"],
   },
   {
     title: "Etch-a-Sketch",
@@ -83,7 +91,7 @@ const otherProjects = [
     image: etchASketch,
     repo: "https://github.com/WebDvProjects/Etch-A-Sketch-Online",
     url: "https://webdvprojects.github.io/Etch-A-Sketch-Online/",
-    tech: ["Javascript", "Webpack", "CSS", "HTML"],
+    techStack: ["Javascript", "Webpack", "CSS", "HTML"],
   },
   {
     title: "Library App",
@@ -91,15 +99,7 @@ const otherProjects = [
     image: libraryApp,
     repo: "https://github.com/WebDvProjects/Library-App",
     url: "https://webdvprojects.github.io/Library-App/",
-    tech: ["Javascript", "CSS", "HTML"],
-  },
-  {
-    title: "Todo List App",
-    description: "A todo list app. Stores your lists in local storage.",
-    image: todoApp,
-    repo: "https://github.com/WebDvProjects/TodoApp",
-    url: "https://github.com/WebDvProjects/TodoApp",
-    tech: ["Javascript", "Webpack", "CSS", "HTML"],
+    techStack: ["Javascript", "CSS", "HTML"],
   },
 ];
 
