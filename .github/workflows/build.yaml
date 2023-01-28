@@ -20,10 +20,10 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        uses: yarn install
+        uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: yarn build
+        run: npm run build
 
       - name: create/update build branch
         run: git branch -f build
