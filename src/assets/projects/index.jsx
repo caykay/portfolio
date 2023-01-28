@@ -1,8 +1,12 @@
 import algoSim from "./algo-simulator.png";
 import memeGenerator from "./meme-generator.png";
 import vrPathwayTool from "./vrpathway.jpeg";
+import tenzies from "./tenzies.jpg";
+import etchASketch from "./etch-a-sketch.png";
+import libraryApp from "./library-app.png";
+import todoApp from "./todo-app.png";
 
-export default [
+const featured = [
   {
     title: "VRPathways Tool",
     description: (
@@ -53,13 +57,59 @@ export default [
     url: "https://webdvprojects.github.io/meme-generator/",
     techStack: ["React", "Javascript", "CSS", "API"],
   },
-
-  //   {
-  //     title: "",
-  //     description: "",
-  //     image: require(""),
-  //     repo: "",
-  //     url: "",
-  //     tech: [],
-  //   },
 ];
+
+const otherProjects = [
+  {
+    title: "Tic Tac Toe",
+    description:
+      "A game of tic tac toe, with a player vs player mode, player vs computer mode and even interesting a computer vs computer mode.",
+    image: undefined,
+    repo: "https://github.com/WebDvProjects/TicTacToe",
+    url: "https://webdvprojects.github.io/TicTacToe/",
+    tech: ["Javascript", "CSS", "HTML"],
+  },
+  {
+    title: "Tenzies",
+    description: "A simple react app that simulates a game of tenzies.",
+    image: tenzies,
+    repo: "https://github.com/WebDvProjects/tenzies-app",
+    url: "https://webdvprojects.github.io/tenzies-app/",
+    tech: ["React", "Javascript", "Vite", "CSS", "HTML"],
+  },
+  {
+    title: "Etch-a-Sketch",
+    description: "A simple etch-a-sketch app.",
+    image: etchASketch,
+    repo: "https://github.com/WebDvProjects/Etch-A-Sketch-Online",
+    url: "https://webdvprojects.github.io/Etch-A-Sketch-Online/",
+    tech: ["Javascript", "Webpack", "CSS", "HTML"],
+  },
+  {
+    title: "Library App",
+    description: "A simple library app.",
+    image: libraryApp,
+    repo: "https://github.com/WebDvProjects/Library-App",
+    url: "https://webdvprojects.github.io/Library-App/",
+    tech: ["Javascript", "CSS", "HTML"],
+  },
+  {
+    title: "Todo List App",
+    description: "A todo list app. Stores your lists in local storage.",
+    image: todoApp,
+    repo: "https://github.com/WebDvProjects/TodoApp",
+    url: "https://github.com/WebDvProjects/TodoApp",
+    tech: ["Javascript", "Webpack", "CSS", "HTML"],
+  },
+];
+
+export default featured;
+
+//   {
+//     title: "",
+//     description: "",
+//     image: require(""),
+//     repo: "",
+//     url: "",
+//     tech: [],
+//   },
