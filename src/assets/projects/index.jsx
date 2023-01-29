@@ -11,14 +11,14 @@ const featured = [
     title: "VRPathways Tool",
     description: (
       <p style={{ margin: "0" }}>
-        A project in collaboration with researchers from the{" "}
-        <b>Commonwealth Scientific and Industrial Research Organisation</b> (
+        A project in collaboration with researchers from the Commonwealth
+        Scientific and Industrial Research Organisation (
         <a href="https://www.csiro.au/en/" target="_blank">
           CSIRO
         </a>
         ) and the University of South Australia. The tool will be used to
-        analyse and monitor potential bio-markers for <b>Alzheimer's disease</b>{" "}
-        in the human saliva in <b>Virtual Reality (VR)</b>.
+        analyse and monitor potential bio-markers for Alzheimer's disease in the
+        human saliva in Virtual Reality (VR).
       </p>
     ),
     image: vrPathwayTool,
@@ -59,7 +59,8 @@ const featured = [
   },
   {
     title: "Todo List App",
-    description: "A todo list app. Stores your lists in local storage.",
+    description:
+      "A todo list app. Keep track of your tasks with the implemented local storage feature allowing you store your data within the browser",
     image: todoApp,
     repo: "https://github.com/WebDvProjects/TodoApp",
     url: "https://webdvprojects.github.io/TodoApp/",

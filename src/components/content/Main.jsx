@@ -2,7 +2,7 @@ import Home from "./Home";
 import Contact from "./Contact";
 import AboutMe from "./AboutMe";
 import Projects from "./Projects";
-import { StyledMain } from "../../styles/Styles";
+import styled from "styled-components";
 
 export default function Main() {
   return (
@@ -14,3 +14,21 @@ export default function Main() {
     </StyledMain>
   );
 }
+
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+
+  counter-reset: section 0;
+
+  // add a number to the main section titles (About Me, Experience, Projects and Contact)
+  .section-title {
+    counter-increment: section 1;
+    &::before {
+      content: "0" counter(section) ". ";
+      color: var(--primary-color);
+      font-family: "PT Mono", monospace;
+    }
+  }
+`;

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { MenuActiveContext } from "./context/MenuActiveContext";
 import useWindowDimensions from "./hooks/useWindowDimensions";
@@ -5,7 +6,23 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import Header from "./components/Header";
 import Main from "./components/content/Main";
 import Footer from "./components/Footer";
-import { StyledApp } from "./styles/Styles";
+
+const StyledApp = styled.div`
+  display: grid;
+  // flex-direction: column;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "main" "footer";
+  gap: 100px;
+
+  main {
+    grid-area: main;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+`;
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
@@ -13,7 +30,6 @@ function App() {
 
   function toggleMenu() {
     setMenuActive(!menuActive);
-    console.log("click");
   }
 
   // close menu on window resize

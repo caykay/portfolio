@@ -1,4 +1,74 @@
-import { StyledMenuIcon } from "../styles/Styles";
+import styled from "styled-components";
+
+const StyledMenuIcon = styled.button`
+  appearance: none;
+  padding: 5px;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color);
+  background-color: transparent;
+  z-index: 3;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    .icon-line,
+    .dot {
+      --delay: 200ms;
+      --duration: 200ms;
+      transform-origin: center;
+    }
+
+    .hidden {
+      opacity: 0;
+    }
+  }
+
+  .close-menu {
+    .icon-line {
+      y: 65;
+    }
+
+    .icon-line.middle,
+    .icon-line.bottom,
+    .dot {
+      opacity: 0;
+    }
+
+    .icon-line.top {
+      transform: rotate(225deg);
+    }
+
+    .icon-line.hidden {
+      opacity: 1;
+      transform: rotate(135deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .open-menu {
+      .icon-line,
+      .dot {
+        transition: transform var(--duration) ease-in,
+          opacity 0ms ease var(--delay), y var(--duration) ease-out var(--delay);
+      }
+    }
+
+    .close-menu {
+      .icon-line,
+      .dot {
+        transition: y var(--duration) ease-out,
+          transform var(--duration) ease var(--delay),
+          opacity 0ms ease var(--delay);
+      }
+    }
+  }
+`;
 
 export default function ({ handleClick, menuActive }) {
   return (
@@ -10,7 +80,8 @@ export default function ({ handleClick, menuActive }) {
         // height="107"
         viewBox="0 0 185 150"
         fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <rect
           className="icon-line top"
           x="17.5"
