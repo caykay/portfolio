@@ -30,4 +30,4 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 - Light/Dark Mode Switch
 
 - Project clean up
-  - migrate large css to chunks of styled components
+  - ~~migrate large css to chunks of styled components~~
