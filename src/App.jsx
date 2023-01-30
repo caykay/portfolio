@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { MenuActiveContext } from "./context/MenuActiveContext";
 import useWindowDimensions from "./hooks/useWindowDimensions";
 import { GlobalStyles } from "./styles/GlobalStyles";
+import PageLoad from "./PageLoad";
 import Header from "./components/Header";
 import Main from "./components/content/Main";
 import Footer from "./components/Footer";
@@ -44,6 +45,12 @@ function App() {
     else document.querySelector("body").classList.remove("no-scroll");
   }, [width, menuActive]);
 
+  const [pageLoading, setPageLoading] = useState(true);
+
+  function finishLoading() {
+    setPageLoading((loading) => false);
+  }
+
   return (
     // todo: pass in a context provider for the dark/light theme
     <HelmetProvider>
@@ -54,18 +61,23 @@ function App() {
         </style>
       </Helmet>
       <GlobalStyles />
-      <StyledApp className="App" menuActive={menuActive}>
-        <MenuActiveContext.Provider value={[menuActive, toggleMenu, width]}>
-          <Header />
-        </MenuActiveContext.Provider>
-        {/* 
+      {pageLoading && <PageLoad finishLoading={finishLoading} />}
+      {!pageLoading && (
+        <>
+          <StyledApp className="App" menuActive={menuActive}>
+            <MenuActiveContext.Provider value={[menuActive, toggleMenu, width]}>
+              <Header />
+            </MenuActiveContext.Provider>
+            {/* 
       TODO: Add routes (when scaling up)
       */}
-        <MenuActiveContext.Provider value={[menuActive]}>
-          <Main />
-          <Footer />
-        </MenuActiveContext.Provider>
-      </StyledApp>
+            <MenuActiveContext.Provider value={[menuActive]}>
+              <Main />
+              <Footer />
+            </MenuActiveContext.Provider>
+          </StyledApp>
+        </>
+      )}
     </HelmetProvider>
   );
 }

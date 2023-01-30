@@ -3,6 +3,7 @@ import { css } from "styled-components";
 export const variables = css`
   :root {
     --bg-color: rgb(18, 13, 39);
+    --bg-color-loading: rgb(18, 13, 49);
     --bg-color-light: rgba(18, 13, 39, 0.8);
     --bg-color-secondary: rgba(30, 20, 60);
     --bg-color-secondary-light: rgba(30, 20, 60, 0.88);

@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { variables } from "./Variables";
+import { TransitionStyles } from "./transitions";
 
 export const GlobalStyles = createGlobalStyle`
     ${variables};
@@ -25,6 +26,10 @@ export const GlobalStyles = createGlobalStyle`
         overscroll-behavior: none;
 
         line-height: 1.5;
+
+        &.hidden{
+            overflow: hidden;
+        }
     }
 
     body.no-scroll {
@@ -106,5 +111,7 @@ export const GlobalStyles = createGlobalStyle`
     .blur {
         filter: blur(5px);
     }
+
+    ${TransitionStyles}
 
 `;
