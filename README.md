@@ -6,6 +6,13 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 
 <img src="./media/portfolio_home.JPG" alt="Portfolio Screenshot" width=90% style="max-width: 900px;margin: 0 auto;"/>
 
+## REACT LIBRARIES USED
+
+- React Helmet Async
+- Animejs
+- React Icons
+- Styled Components
+
 ## TODO
 
 - ~~hamburger menu for small screen sizes~~
@@ -22,8 +29,10 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 
 - Animations :
 
-  - Page load (logo animation)
+  - ~~Page load (logo animation)~~
   - components load
+    - hero section and side bars (loads differently from other sections)
+    - Other sections (reveal when scroll)
 
 - Different logo sizes and variation
 
@@ -31,3 +40,4 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 
 - Project clean up
   - ~~migrate large css to chunks of styled components~~
+  - ~~separate components, styles, hooks, icons, and other assets into respective directories~~

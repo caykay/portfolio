@@ -6,7 +6,7 @@ import etchASketch from "./etch-a-sketch.png";
 import libraryApp from "./library-app.png";
 import todoApp from "./todo-app.png";
 
-const featured = [
+const FeaturedProjects = [
   {
     title: "VRPathways Tool",
     description: (
@@ -104,7 +104,7 @@ const otherProjects = [
   },
 ];
 
-export default featured;
+export default FeaturedProjects;
 
 //   {
 //     title: "",

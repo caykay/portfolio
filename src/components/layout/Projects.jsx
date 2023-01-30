@@ -1,4 +1,4 @@
-import ProjectsList from "../../assets/projects/index";
+import FeaturedProjects from "../../assets/projects";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { useState } from "react";
 import styled from "styled-components";
@@ -61,7 +61,7 @@ const ProjectListElements = ({ projects, windowDimensions }) =>
   });
 
 function Projects() {
-  const [projects, setProjects] = useState(ProjectsList);
+  const [projects, setProjects] = useState(FeaturedProjects);
   const windowDimensions = useWindowDimensions();
   return (
     <StyledProjectsSection id="projects">

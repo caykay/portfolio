@@ -1,5 +1,10 @@
 import { css } from "styled-components";
 
+function extractRGBValues(rgb) {
+  // return /(?<=\()(.*?)(?=\))/.exec(rgb)[0]; // works in chrome but not safari(lookbehind not yet supported)
+  return /\((.*?)\)/.exec(rgb)[1];
+}
+
 export const variables = css`
   :root {
     --bg-color: rgb(18, 13, 39);
@@ -8,8 +13,14 @@ export const variables = css`
     --bg-color-secondary: rgba(30, 20, 60);
     --bg-color-secondary-light: rgba(30, 20, 60, 0.88);
     --project-photo-veil: rgba(0, 0, 0, 0.5);
-    --primary-color: rgb(35, 147, 227);
-    --primary-color-light: rgb(35, 147, 227, 0.2);
+    --primary-color: ${({ primaryColor }) =>
+      primaryColor
+        ? `rgba(${extractRGBValues(primaryColor)})`
+        : "rgba(35, 147, 227)"};
+    --primary-color-light: ${({ primaryColor }) =>
+      primaryColor
+        ? `rgba(${extractRGBValues(primaryColor)}, 0.2)`
+        : "rgba(35, 147, 227, 0.2)"};
     --secondary-color: rgb(163, 168, 195);
     --tertiary-color: rgb(255, 255, 255);
     --scrollbar-thumb: rgba(255, 255, 255, 0.3);

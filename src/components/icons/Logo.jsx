@@ -1,4 +1,4 @@
-export default function ({ className }) {
+export default function Logo({ className }) {
   return (
     <svg
       className={className}

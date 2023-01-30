@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-export const MenuActiveContext = createContext();
+const MenuActiveContext = createContext();
+
+export default MenuActiveContext;

@@ -140,7 +140,7 @@ function AboutMeContent() {
         <p>
           I am currently looking for a full-time position as a software
           developer and I am excited to bring my knowledge and expertise to any
-          project in the web development field.{" "}
+          project.{" "}
         </p>
         <p>Tech Stack and Technologies (competent):</p>
         <ul className="about--tech-stack">

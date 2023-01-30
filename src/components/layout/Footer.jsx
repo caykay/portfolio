@@ -1,6 +1,6 @@
 import Sidebars from "./SideBars";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "../assets/vite.svg";
+import reactLogo from "../../assets/react.svg";
+import viteLogo from "../../assets/vite.svg";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`

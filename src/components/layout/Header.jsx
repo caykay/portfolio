@@ -1,11 +1,11 @@
-import Logo from "./Logo";
+import { Logo } from "../icons";
 import HeaderMenu from "./HeaderMenu";
 import { useContext } from "react";
-import { MenuActiveContext } from "../context/MenuActiveContext";
+import { MenuActiveContext } from "../../context";
 import styled from "styled-components";
 
 export default function Header() {
-  const [menuActive] = useContext(MenuActiveContext);
+  const { menuActive } = useContext(MenuActiveContext);
 
   return (
     <StyledHeader menuActive={menuActive}>

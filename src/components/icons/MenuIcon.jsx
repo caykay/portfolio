@@ -70,7 +70,7 @@ const StyledMenuIcon = styled.button`
   }
 `;
 
-export default function ({ handleClick, menuActive }) {
+export default function MenuIcon({ handleClick, menuActive }) {
   return (
     // if menu is active then set menu icon to inactive
     <StyledMenuIcon onClick={() => handleClick()}>

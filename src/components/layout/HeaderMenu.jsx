@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { MenuActiveContext } from "../context/MenuActiveContext";
-import MenuIcon from "./MenuIcon";
+import { MenuActiveContext } from "../../context";
+import { MenuIcon } from "../icons";
 import styled from "styled-components";
 
 function NavLinks({ menuActive, handleLinkClick }) {
@@ -40,7 +40,11 @@ function PopupMenu({ toggleMenu, windowWidth, menuActive }) {
 }
 
 export default function MenuContainer() {
-  const [menuActive, toggleMenu, windowWidth] = useContext(MenuActiveContext);
+  const {
+    menuActive,
+    toggleMenu,
+    width: windowWidth,
+  } = useContext(MenuActiveContext);
 
   return (
     <>
