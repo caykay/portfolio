@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContentContext } from "../../context";
 import { MenuIcon } from "../icons";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 // default variants for links motion
 const defaultVariants = {
+  default: true,
   hidden: {
     opacity: 0,
     y: -100,
@@ -59,15 +60,20 @@ const popupMenuLinksVariants = {
   },
 };
 
-function NavLinks({ menuActive, handleLinkClick, variants }) {
+function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
   const links = ["about", "projects", "contact"];
   const { animStates } = useContext(ContentContext);
   const { navDone } = animStates;
+
   return (
-    <StyledNavLinks className="nav-links" menuActive={menuActive || false}>
+    <StyledNavLinks className="nav-links" menuActive={menuActive}>
       {links &&
         links.map((link, i) => (
-          <motion.li key={link} custom={i} variants={variants}>
+          <motion.li
+            initial={!navDone ? undefined : false} // do not reanimate if not in popup menu
+            key={link}
+            custom={i}
+            variants={variants}>
             <a href={`#${link}`} onClick={handleLinkClick}>
               {link[0].toUpperCase() + link.slice(1)}
             </a>
@@ -120,7 +126,7 @@ export default function MenuContainer() {
   return (
     <>
       {windowWidth > 770 ? (
-        <NavLinks variants={defaultVariants} />
+        <NavLinks />
       ) : (
         <>
           <MenuIcon

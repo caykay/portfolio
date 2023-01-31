@@ -26,6 +26,7 @@ export default function Header() {
     <StyledHeader
       as={motion.header}
       initial="hidden"
+      // viewport={{ once: true }}
       animate="visible"
       variants={variants}
       onAnimationComplete={(definition) => dispatch({ type: "navIsDone" })}
