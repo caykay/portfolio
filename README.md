@@ -12,6 +12,7 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 - Animejs
 - React Icons
 - Styled Components
+- Framer Motion
 
 ## TODO
 
@@ -31,7 +32,7 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 
   - ~~Page load (logo animation)~~
   - components load
-    - hero section and side bars (loads differently from other sections)
+    - ~~hero section and side bars (loads differently from other sections)~~
     - Other sections (reveal when scroll)
 
 - Different logo sizes and variation

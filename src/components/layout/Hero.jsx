@@ -12,15 +12,20 @@ const parentVariants = {
   visible: {
     opacity: 1,
     transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.3,
+      // when: "beforeChildren",
+      duration: 1,
+      staggerChildren: 0.1,
     },
   },
   hidden: { opacity: 0 },
 };
 
 const childVariants = {
-  visible: { opacity: 1, x: 0 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { ease: "anticipate", duration: 1 },
+  },
   hidden: { opacity: 0, x: -100 },
 };
 
@@ -30,6 +35,7 @@ const childVariants = {
  as forwardRefs
 */
 
+// custom btn with fade in animation along side the hero components
 const CustomBtn = motion(ContactBtn);
 
 export default function Hero(props) {

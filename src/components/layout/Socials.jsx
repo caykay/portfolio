@@ -112,7 +112,7 @@ const CustomSideBar = forwardRef((props, ref) => {
   );
 });
 
-function SideBars() {
+function Socials() {
   const socials = [
     { link: "https://github.com/caykay", icon: <FaGithub /> },
     {
@@ -151,4 +151,4 @@ function SideBars() {
   );
 }
 
-export default SideBars;
+export default Socials;

@@ -17,7 +17,8 @@ const defaultVariants = {
     y: 0,
     transition: {
       ease: "anticipate",
-      delay: custom * 0.1,
+      duration: 0.3,
+      // delay: custom * 0.1,
     },
   }),
 };
