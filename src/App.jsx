@@ -28,13 +28,20 @@ const INITIAL_ANIMATION_STATES = {
   socialsDone: false,
 };
 
+// similar to enums
+export const ACTION_TYPES = {
+  NAV_DONE: 1,
+  HERO_DONE: 2,
+  SOCIALS_DONE: 3,
+};
+
 const animationReducer = (state, action) => {
   switch (action.type) {
-    case "navIsDone":
+    case ACTION_TYPES.NAV_DONE:
       return { ...state, navDone: true };
-    case "heroIsDone":
+    case ACTION_TYPES.HERO_DONE:
       return { ...state, heroDone: true };
-    case "socialsIsDone":
+    case ACTION_TYPES.SOCIALS_DONE:
       return { ...state, socialsDone: true };
     default:
       break;

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useContext, useEffect, useState } from "react";
 import { ContentContext } from "../../context";
+import { ACTION_TYPES } from "../../App";
 
 // https://www.framer.com/motion/animation/##propagation
 // todo: usePreferedReducedMotion hook from framer-motion
@@ -40,7 +41,10 @@ export default function Hero(props) {
       as={motion.section}
       initial="hidden"
       animate={navDone && "visible"}
-      variants={parentVariants}>
+      variants={parentVariants}
+      onAnimationComplete={(definition) => {
+        dispatch({ type: ACTION_TYPES.HERO_DONE });
+      }}>
       <motion.div className="welcome" variants={childVariants}>
         Welcome, my name is
       </motion.div>

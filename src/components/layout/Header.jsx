@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { ContentContext } from "../../context";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { ACTION_TYPES } from "../../App";
 
 const variants = {
   hidden: {
@@ -29,7 +30,9 @@ export default function Header() {
       // viewport={{ once: true }}
       animate="visible"
       variants={variants}
-      onAnimationComplete={(definition) => dispatch({ type: "navIsDone" })}
+      onAnimationComplete={(definition) =>
+        dispatch({ type: ACTION_TYPES.NAV_DONE })
+      }
       menuActive={menuActive}>
       <a href="/" className="logo-link">
         <Logo className="logo" />

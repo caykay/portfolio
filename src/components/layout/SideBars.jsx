@@ -8,6 +8,9 @@ import {
   FaCodepen,
 } from "react-icons/fa";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { forwardRef, useContext } from "react";
+import { ContentContext } from "../../context";
 
 const StyledSideBar = styled.aside`
   position: fixed;
@@ -69,7 +72,8 @@ const StyledSideBar = styled.aside`
     // fix position when screen is too small
   ${(props) =>
       props.position === "left" &&
-      "position: relative;\
+      "opacity: 1 !important;\
+       position: relative;\
     left:auto;bottom: auto; transform:translateX(0%);\
     .sidebar--wrapper{\
       rotate: 0deg;\
@@ -82,6 +86,31 @@ const StyledSideBar = styled.aside`
     }"}
   }
 `;
+
+const variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+const CustomSideBar = forwardRef((props, ref) => {
+  const { animStates, dispatch } = useContext(ContentContext);
+  const { heroDone } = animStates;
+
+  return (
+    <StyledSideBar
+      ref={ref}
+      {...props}
+      as={motion.aside}
+      initial="hidden"
+      animate={heroDone && "visible"}
+      variants={variants}
+    />
+  );
+});
 
 function SideBars() {
   const socials = [
@@ -98,9 +127,10 @@ function SideBars() {
     { link: "https://twitter.com/caykay2", icon: <FaTwitter /> },
     { link: "https://codepen.io/caykay", icon: <FaCodepen /> },
   ];
+
   return (
     <>
-      <StyledSideBar className="sidebar" position="left">
+      <CustomSideBar className="sidebar" position="left">
         <div className="sidebar--wrapper">
           {socials.length > 0 &&
             socials.map((social, index) => (
@@ -109,14 +139,14 @@ function SideBars() {
               </a>
             ))}
         </div>
-      </StyledSideBar>
-      <StyledSideBar className="sidebar" position="right">
+      </CustomSideBar>
+      <CustomSideBar className="sidebar" position="right">
         <div className="sidebar--wrapper">
           <a href="mailto:kahemacassian@gmail.coms" className="email">
             kahemacassian@gmail.com
           </a>
         </div>
-      </StyledSideBar>
+      </CustomSideBar>
     </>
   );
 }
