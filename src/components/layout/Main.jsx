@@ -1,4 +1,4 @@
-import Home from "./Home";
+import Hero from "./Hero";
 import Contact from "./Contact";
 import AboutMe from "./AboutMe";
 import Projects from "./Projects";
@@ -7,7 +7,7 @@ import styled from "styled-components";
 export default function Main() {
   return (
     <StyledMain>
-      <Home />
+      <Hero />
       <AboutMe />
       <Projects />
       <Contact />

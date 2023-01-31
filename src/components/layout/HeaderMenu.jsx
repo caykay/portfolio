@@ -1,19 +1,77 @@
 import { useContext } from "react";
-import { MenuActiveContext } from "../../context";
+import { ContentContext } from "../../context";
 import { MenuIcon } from "../icons";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-function NavLinks({ menuActive, handleLinkClick }) {
+// default variants for links motion
+const defaultVariants = {
+  hidden: {
+    opacity: 0,
+    y: -100,
+  },
+
+  visible: (custom) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      ease: "anticipate",
+      delay: custom * 0.1,
+    },
+  }),
+};
+
+const popupMenuVariants = {
+  open: (width) => ({
+    clipPath: `circle(200% at 86% 4.5%)`,
+    transition: {
+      // when: "beforeChildren",
+      type: "spring",
+      stiffness: 40,
+      restDelta: 2,
+      delayChildren: 0.2,
+    },
+  }),
+
+  closed: (width) => ({
+    clipPath: `circle(0% at 86% 4.5%)`,
+    transition: {
+      // delay: 0.5,
+      type: "spring",
+      stiffness: 35,
+      // restDelta: 2,
+    },
+  }),
+};
+
+// motion variants for links when in popup menu
+const popupMenuLinksVariants = {
+  open: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.1,
+    },
+  }),
+  closed: {
+    y: 50,
+    opacity: 0,
+  },
+};
+
+function NavLinks({ menuActive, handleLinkClick, variants }) {
   const links = ["about", "projects", "contact"];
+  const { animStates } = useContext(ContentContext);
+  const { navDone } = animStates;
   return (
     <StyledNavLinks className="nav-links" menuActive={menuActive || false}>
       {links &&
-        links.map((link) => (
-          <li key={link}>
+        links.map((link, i) => (
+          <motion.li key={link} custom={i} variants={variants}>
             <a href={`#${link}`} onClick={handleLinkClick}>
               {link[0].toUpperCase() + link.slice(1)}
             </a>
-          </li>
+          </motion.li>
         ))}
     </StyledNavLinks>
   );
@@ -26,14 +84,27 @@ function PopupMenu({ toggleMenu, windowWidth, menuActive }) {
   }
   return (
     <>
-      <StlyedPopupMenu menuActive={menuActive}>
-        <NavLinks menuActive={menuActive} handleLinkClick={handleLinkClicked} />
+      <StlyedPopupMenu
+        as={motion.aside}
+        initial={false}
+        animate={menuActive ? "open" : "closed"}
+        custom={windowWidth}
+        variants={popupMenuVariants}
+        onAnimationComplete={(definition) =>
+          console.log("Animation complete", definition)
+        }
+        menuActive={menuActive}>
+        {/* Pass different motion variants for links in popup menu */}
+        <NavLinks
+          menuActive={menuActive}
+          variants={popupMenuLinksVariants}
+          handleLinkClick={handleLinkClicked}
+        />
       </StlyedPopupMenu>
       {menuActive && windowWidth > 500 && (
         <StyledPopupVeil
           className="veil"
-          onClick={toggleMenu}
-        ></StyledPopupVeil>
+          onClick={toggleMenu}></StyledPopupVeil>
       )}
     </>
   );
@@ -44,12 +115,12 @@ export default function MenuContainer() {
     menuActive,
     toggleMenu,
     width: windowWidth,
-  } = useContext(MenuActiveContext);
+  } = useContext(ContentContext);
 
   return (
     <>
       {windowWidth > 770 ? (
-        <NavLinks />
+        <NavLinks variants={defaultVariants} />
       ) : (
         <>
           <MenuIcon
@@ -97,9 +168,9 @@ const StlyedPopupMenu = styled.aside`
   width: 50%;
   background: var(--popup-menu-bg, #112240);
   z-index: 2;
-  transform: translateX(100%);
+  /* transform: translateX(100%);
   visibility: hidden;
-  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out; */
 
   .nav-links {
     flex-direction: column;
@@ -121,8 +192,8 @@ const StlyedPopupMenu = styled.aside`
     }
   }
 
-  ${(props) =>
-    props.menuActive && "transform: translateX(0); visibility: visible;"}
+  /* ${(props) =>
+    props.menuActive && "transform: translateX(0); visibility: visible;"} */
 `;
 
 const StyledPopupVeil = styled.div`

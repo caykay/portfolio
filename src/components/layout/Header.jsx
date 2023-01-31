@@ -1,14 +1,35 @@
 import { Logo } from "../icons";
 import HeaderMenu from "./HeaderMenu";
 import { useContext } from "react";
-import { MenuActiveContext } from "../../context";
+import { ContentContext } from "../../context";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
+const variants = {
+  hidden: {
+    opacity: 0,
+  },
+
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.3,
+    },
+  },
+};
 
 export default function Header() {
-  const { menuActive } = useContext(MenuActiveContext);
+  const { menuActive, dispatch } = useContext(ContentContext);
 
   return (
-    <StyledHeader menuActive={menuActive}>
+    <StyledHeader
+      as={motion.header}
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      onAnimationComplete={(definition) => dispatch({ type: "navIsDone" })}
+      menuActive={menuActive}>
       <a href="/" className="logo-link">
         <Logo className="logo" />
       </a>

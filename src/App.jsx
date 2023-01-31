@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { useState, useEffect } from "react";
-import { ThemeContext, MenuActiveContext } from "./context";
+import { useState, useEffect, useReducer } from "react";
+import { ThemeContext, ContentContext } from "./context";
 import { useWindowDimensions } from "./hooks";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { LoadingPage, MainContent, Header, Footer } from "./components/layout";
@@ -22,11 +22,36 @@ const StyledApp = styled.div`
   }
 `;
 
+const INITIAL_ANIMATION_STATES = {
+  navDone: false,
+  heroDone: false,
+  socialsDone: false,
+};
+
+const animationReducer = (state, action) => {
+  switch (action.type) {
+    case "navIsDone":
+      return { ...state, navDone: true };
+    case "heroIsDone":
+      return { ...state, heroDone: true };
+    case "socialsIsDone":
+      return { ...state, socialsDone: true };
+    default:
+      break;
+  }
+};
+
 function App() {
   const [menuActive, setMenuActive] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [themeColor, setThemeColor] = useState("rgb(35, 147, 227)");
+  const [pageLoading, setPageLoading] = useState(false);
   const { width } = useWindowDimensions();
+  // animation statuses for (nav, hero and socials (if on side))
+  const [animStates, dispatch] = useReducer(
+    animationReducer,
+    INITIAL_ANIMATION_STATES
+  );
 
   function toggleMenu() {
     setMenuActive(!menuActive);
@@ -46,8 +71,6 @@ function App() {
     if (menuActive) document.querySelector("body").classList.add("no-scroll");
     else document.querySelector("body").classList.remove("no-scroll");
   }, [width, menuActive]);
-
-  const [pageLoading, setPageLoading] = useState(true);
 
   function finishLoading() {
     setPageLoading((loading) => false);
@@ -71,13 +94,12 @@ function App() {
         {!pageLoading && (
           <>
             <StyledApp className="App" menuActive={menuActive}>
-              <MenuActiveContext.Provider
-                value={{ menuActive, toggleMenu, width }}
-              >
+              <ContentContext.Provider
+                value={{ menuActive, toggleMenu, width, animStates, dispatch }}>
                 <Header />
                 <MainContent />
                 <Footer />
-              </MenuActiveContext.Provider>
+              </ContentContext.Provider>
             </StyledApp>
           </>
         )}
