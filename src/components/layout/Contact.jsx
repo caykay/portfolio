@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
 import { StyledBtn } from "../../styles/Styles";
+import { makeFadeEnter } from "../motions";
 
 const StyledContact = styled.section`
   display: flex;
@@ -27,9 +28,11 @@ const ContactBtn = forwardRef((props, ref) => {
   );
 });
 
+const CustomStyledContact = makeFadeEnter(StyledContact);
+
 function Contact() {
   return (
-    <StyledContact id="contact">
+    <CustomStyledContact id="contact">
       <div className="section-title">What's Next?</div>
       <div className="contact--title">Get in Touch</div>
       <p
@@ -41,7 +44,7 @@ function Contact() {
         or if you would like to discuss potential job opportunities.
       </p>
       <ContactBtn btnText="Say Hello!" />
-    </StyledContact>
+    </CustomStyledContact>
   );
 }
 

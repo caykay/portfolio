@@ -9,6 +9,7 @@ import {
   FaNodeJs,
 } from "react-icons/fa";
 import { SiCsharp } from "react-icons/si";
+import { makeFadeEnter } from "../motions";
 
 const StyledAboutMe = styled.section`
   display: flex;
@@ -87,12 +88,14 @@ const StyledAboutMe = styled.section`
   }
 `;
 
+const CustomAboutMe = makeFadeEnter(StyledAboutMe);
+
 function AboutMe() {
   return (
-    <StyledAboutMe id="about">
+    <CustomAboutMe id="about">
       <StyledHeading className="section-title">About Me</StyledHeading>
       <AboutMeContent />
-    </StyledAboutMe>
+    </CustomAboutMe>
   );
 }
 
@@ -118,8 +121,7 @@ function AboutMeContent() {
           . Watching Hacking and Cyber Security Movies and TV Shows like{" "}
           <a
             href="https://en.wikipedia.org/wiki/Nikita_(TV_series)"
-            target="_blank"
-          >
+            target="_blank">
             Nikita
           </a>{" "}
           when I was young is what inspired me to pursue a developer career.

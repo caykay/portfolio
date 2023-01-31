@@ -1,7 +1,7 @@
 import Hero from "./Hero";
 import Contact from "./Contact";
 import AboutMe from "./AboutMe";
-import Projects from "./Projects";
+import { Projects } from "./projects";
 import styled from "styled-components";
 
 export default function Main() {
