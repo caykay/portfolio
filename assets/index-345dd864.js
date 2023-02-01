@@ -543,7 +543,7 @@ Error generating stack: `+o.message+`
         display: block;
         filter: grayscale(100%) contrast(1) brightness(80%);
         mix-blend-mode: multiply;
-        transition: all 0.3s ease-in-out;
+        /* transition: all 0.3s ease-in-out; */
       }
     }
 
