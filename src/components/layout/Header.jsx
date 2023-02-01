@@ -20,7 +20,7 @@ const variants = {
   },
 };
 
-export default function Header() {
+export default function Header({ pageScroll }) {
   const { menuActive, dispatch } = useContext(ContentContext);
   const { reducedMotion } = useContext(ThemeContext);
 
@@ -34,7 +34,8 @@ export default function Header() {
       onAnimationComplete={(definition) =>
         dispatch({ type: ACTION_TYPES.NAV_DONE })
       }
-      menuActive={menuActive}>
+      menuActive={menuActive}
+      shadow={pageScroll > 0 ? true : false}>
       <a href="/" className="logo-link">
         <Logo className="logo" />
       </a>
@@ -57,6 +58,7 @@ const StyledHeader = styled.header`
   align-items: center;
   font-size: var(--fs-xs);
   font-family: "PT Mono", monospace;
+  ${({ shadow }) => shadow && "box-shadow: 0 0 0.75rem -0.2rem #000000;"}
   z-index: 100;
   .logo {
     flex-shrink: 0;

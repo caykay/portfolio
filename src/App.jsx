@@ -5,7 +5,7 @@ import { ThemeContext, ContentContext } from "./context";
 import { useReducedMotion, useWindowDimensions } from "./hooks";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { LoadingPage, MainContent, Header, Footer } from "./components/layout";
-import { MotionConfig } from "framer-motion";
+import { MotionConfig, useScroll } from "framer-motion";
 
 const StyledApp = styled.div`
   display: grid;
@@ -63,6 +63,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [themeColor, setThemeColor] = useState("rgb(35, 147, 227)");
   const [pageLoading, setPageLoading] = useState(true);
+
   const { width } = useWindowDimensions();
   const reducedMotion = useReducedMotion();
   // animation statuses for (nav, hero and socials (if on side))
@@ -71,6 +72,9 @@ function App() {
     INITIAL_ANIMATION_STATES,
     getInitialStates
   );
+  // y-axis scroll progress of the main content
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const { scrollYProgress } = useScroll();
 
   function toggleMenu() {
     setMenuActive(!menuActive);
@@ -80,7 +84,11 @@ function App() {
     setDarkMode((mode) => !mode);
   }
 
-  // close menu on window resize
+  function updateScrollProgress(n) {
+    setScrollProgress(n);
+  }
+
+  // close side menu on window resize
   useEffect(() => {
     if (width > 770) {
       setMenuActive(false);
@@ -90,6 +98,12 @@ function App() {
     if (menuActive) document.querySelector("body").classList.add("no-scroll");
     else document.querySelector("body").classList.remove("no-scroll");
   }, [width, menuActive]);
+
+  useEffect(() => {
+    scrollYProgress.on("change", (n) => updateScrollProgress(n));
+
+    return () => scrollYProgress.destroy();
+  }, []);
 
   function finishLoading() {
     setPageLoading((loading) => false);
@@ -115,8 +129,14 @@ function App() {
           <MotionConfig reducedMotion="user">
             <StyledApp className="App" menuActive={menuActive}>
               <ContentContext.Provider
-                value={{ menuActive, toggleMenu, width, animStates, dispatch }}>
-                <Header />
+                value={{
+                  menuActive,
+                  toggleMenu,
+                  width,
+                  animStates,
+                  dispatch,
+                }}>
+                <Header pageScroll={scrollProgress} />
                 <MainContent />
                 <Footer />
               </ContentContext.Provider>
