@@ -79,7 +79,7 @@ Error generating stack: `+o.message+`
     --fs-xxl: 1.375rem;
     --fs-heading: 1.75rem;
 
-    --header-height: 70px;
+    --header-height: 90px;
   }
 `,o4=Ta``,s4=V3`
     ${i4};
@@ -173,13 +173,15 @@ Error generating stack: `+o.message+`
     }
 
     ::-webkit-scrollbar {
-        width: 20px;
+        width: 14px;
     }
 
     ::-webkit-scrollbar-thumb {
         background: var(--scrollbar-thumb);
-        border-radius: 10px;
-        border: 7px solid rgba(0, 0, 0, 0);
+        border-radius: 999px;
+        border: 4px solid rgba(0, 0, 0, 0);
+        
+
         background-clip: padding-box;
     }
 
@@ -335,8 +337,13 @@ Error generating stack: `+o.message+`
   align-items: center;
   font-size: var(--fs-xs);
   font-family: "PT Mono", monospace;
-  ${({shadow:e})=>e&&"box-shadow: 0 0 0.75rem -0.2rem #000000;"}
+
+  ${({shadow:e})=>e&&"box-shadow: 0 0 0.75rem -0.2rem #000000; height:calc(var(--header-height) - 20px);"}
+
+  transition: height 0.25s ease-in;
+
   z-index: 100;
+
   .logo {
     flex-shrink: 0;
     width: 40px;
@@ -421,9 +428,10 @@ Error generating stack: `+o.message+`
     max-width: 520px;
   }
 
-  @media (max-height: 500px), (max-width: 450px) {
+  @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     min-height: auto;
     height: auto;
+    padding-top: var(--header-height);
   }
 `,Rh=De.div`
   font-size: clamp(2.5rem, 8vw, 5rem);
