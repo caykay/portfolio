@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useReducedMotion } from "../../hooks";
 
 const variants = {
   hidden: {
@@ -23,9 +24,9 @@ const variants = {
 /* props for motion animation
 The component using the props has to be a motion component */
 const fadeEnterProps = {
-  initial: "hidden",
+  initial: (reducedMotion = false) => (reducedMotion ? false : "hidden"),
   whileInView: "visible",
-  viewport: { once: true },
+  viewport: { once: true, amount: 0.3, margin: "100px" },
   variants: { ...variants },
 };
 
@@ -35,16 +36,12 @@ const fadeEnterProps = {
 const makeFadeEnter = (Component) => {
   const CustomComponent = motion(Component);
 
-  return (props) => (
-    <CustomComponent
-      // initial="hidden"
-      // whileInView="visible"
-      // viewport={{ once: true }}
-      // variants={variants}
-      {...fadeEnterProps}
-      {...props}
-    />
-  );
+  return (props) => {
+    const reducedMotion = useReducedMotion();
+    return (
+      <CustomComponent custom={reducedMotion} {...fadeEnterProps} {...props} />
+    );
+  };
 };
 
 export { makeFadeEnter as default, fadeEnterProps };

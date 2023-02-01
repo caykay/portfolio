@@ -1,7 +1,7 @@
 import { Logo } from "../icons";
 import HeaderMenu from "./HeaderMenu";
 import { useContext } from "react";
-import { ContentContext } from "../../context";
+import { ContentContext, ThemeContext } from "../../context";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { ACTION_TYPES } from "../../App";
@@ -22,11 +22,12 @@ const variants = {
 
 export default function Header() {
   const { menuActive, dispatch } = useContext(ContentContext);
+  const { reducedMotion } = useContext(ThemeContext);
 
   return (
     <StyledHeader
       as={motion.header}
-      initial="hidden"
+      initial={reducedMotion ? false : "hidden"}
       // viewport={{ once: true }}
       animate="visible"
       variants={variants}

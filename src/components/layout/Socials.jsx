@@ -66,7 +66,7 @@ const StyledSideBar = styled.aside`
     font-family: "PT Mono", monospace;
   }
 
-  @media Screen and (max-width: 500px), (max-height: 500px) {
+  @media Screen and (max-width: 770px), (max-height: 500px) {
     ${(props) => props.position === "right" && "display: none;"}
 
     // fix position when screen is too small

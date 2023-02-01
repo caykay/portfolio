@@ -11,6 +11,7 @@ const StyledContact = styled.section`
   max-width: 600px;
   margin: 0 auto;
   gap: 10px;
+  padding: 50px 0;
 
   .contact--title {
     font-size: clamp(40px, 5vw, 60px);

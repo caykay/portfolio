@@ -3,7 +3,7 @@ import { ContactBtn } from "./Contact";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useContext, useEffect, useState } from "react";
-import { ContentContext } from "../../context";
+import { ContentContext, ThemeContext } from "../../context";
 import { ACTION_TYPES } from "../../App";
 
 // https://www.framer.com/motion/animation/##propagation
@@ -41,11 +41,12 @@ const CustomBtn = motion(ContactBtn);
 export default function Hero(props) {
   const { animStates, dispatch } = useContext(ContentContext);
   const { navDone } = animStates;
+  const { reducedMotion } = useContext(ThemeContext);
 
   return (
-    <StyledHome
+    <StyledHero
       as={motion.section}
-      initial="hidden"
+      initial={reducedMotion ? false : "hidden"}
       animate={navDone && "visible"}
       variants={parentVariants}
       onAnimationComplete={(definition) => {
@@ -70,15 +71,17 @@ export default function Hero(props) {
         visiting. */}
       </motion.p>
       <CustomBtn btnText={"Contact Me"} variants={childVariants} />
-    </StyledHome>
+    </StyledHero>
   );
 }
 
-const StyledHome = styled.section`
+const StyledHero = styled.section`
+  min-height: 100vh;
   height: 100vh;
-  padding-top: 140px;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
   max-width: 1000px;
   margin: 0 auto;
@@ -98,6 +101,7 @@ const StyledHome = styled.section`
   }
 
   @media (max-height: 500px), (max-width: 450px) {
+    min-height: auto;
     height: auto;
   }
 `;

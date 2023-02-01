@@ -31,21 +31,21 @@ const StyledLoadingPage = styled.div`
       display: block;
       user-select: none;
       #C {
-        opacity: 0;
+        opacity: ${({ mounted }) => (mounted ? 1 : 0)};
       }
     }
   }
 `;
 
 function PageLoad({ finishLoading }) {
-  const [isMounted, setIsMounted] = useState(false);
-  const { themeColor } = useContext(ThemeContext);
+  const { themeColor, reducedMotion } = useContext(ThemeContext);
+  const [isMounted, setIsMounted] = useState(reducedMotion);
 
   function animate() {
     // setup timeline animations and parent properties
     var animation = anime.timeline({
       easing: "easeInOutQuart",
-      duration: 2000,
+      duration: reducedMotion ? 500 : 2000,
       direction: "linear",
       loop: false,
       complete: () => finishLoading(),
@@ -54,7 +54,7 @@ function PageLoad({ finishLoading }) {
     // path animation
     animation.add({
       targets: "#path",
-      strokeDashoffset: [anime.setDashoffset, 0],
+      strokeDashoffset: !reducedMotion && [anime.setDashoffset, 0],
     });
 
     // letter c fade in animation
@@ -87,8 +87,13 @@ function PageLoad({ finishLoading }) {
   }
 
   useEffect(() => {
+    // if (reducedMotion) return;
+
     // set logo as mounted after 10 milliseconds (slight animation)
-    const timeout = setTimeout(() => setIsMounted(true), 10);
+    const timeout = setTimeout(() => {
+      if (reducedMotion) return;
+      setIsMounted(true);
+    }, 10);
 
     animate();
 

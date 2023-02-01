@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useState, useEffect, useReducer } from "react";
 import { ThemeContext, ContentContext } from "./context";
-import { useWindowDimensions } from "./hooks";
+import { useReducedMotion, useWindowDimensions } from "./hooks";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { LoadingPage, MainContent, Header, Footer } from "./components/layout";
+import { MotionConfig } from "framer-motion";
 
 const StyledApp = styled.div`
   display: grid;
@@ -48,16 +49,27 @@ const animationReducer = (state, action) => {
   }
 };
 
+function getInitialStates(isMotionReduced) {
+  const reducedAnimationStates = {
+    navDone: true,
+    heroDone: true,
+    socialsDone: true,
+  };
+  return isMotionReduced ? reducedAnimationStates : INITIAL_ANIMATION_STATES;
+}
+
 function App() {
   const [menuActive, setMenuActive] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [themeColor, setThemeColor] = useState("rgb(35, 147, 227)");
-  const [pageLoading, setPageLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
   const { width } = useWindowDimensions();
+  const reducedMotion = useReducedMotion();
   // animation statuses for (nav, hero and socials (if on side))
   const [animStates, dispatch] = useReducer(
     animationReducer,
-    INITIAL_ANIMATION_STATES
+    INITIAL_ANIMATION_STATES,
+    getInitialStates
   );
 
   function toggleMenu() {
@@ -93,13 +105,14 @@ function App() {
         </style>
       </Helmet>
       <GlobalStyles primaryColor={themeColor} />
-      <ThemeContext.Provider value={{ darkMode, toggleDarkMode, themeColor }}>
+      <ThemeContext.Provider
+        value={{ darkMode, toggleDarkMode, themeColor, reducedMotion }}>
         {/* activate loading page is the page is loaded */}
         {pageLoading && <LoadingPage finishLoading={finishLoading} />}
 
         {/* Only show main app content once page is done loading */}
         {!pageLoading && (
-          <>
+          <MotionConfig reducedMotion="user">
             <StyledApp className="App" menuActive={menuActive}>
               <ContentContext.Provider
                 value={{ menuActive, toggleMenu, width, animStates, dispatch }}>
@@ -108,7 +121,7 @@ function App() {
                 <Footer />
               </ContentContext.Provider>
             </StyledApp>
-          </>
+          </MotionConfig>
         )}
       </ThemeContext.Provider>
     </HelmetProvider>
