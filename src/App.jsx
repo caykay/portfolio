@@ -70,7 +70,7 @@ function App() {
   const [animStates, dispatch] = useReducer(
     animationReducer,
     INITIAL_ANIMATION_STATES,
-    getInitialStates
+    () => getInitialStates(reducedMotion)
   );
   // y-axis scroll progress of the main content
   const [scrollProgress, setScrollProgress] = useState(0);
