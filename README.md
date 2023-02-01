@@ -4,7 +4,7 @@ A portfolio ([cassiankahema.com](https://cassiankahema.com)) I made based off of
 
 I used ReactJs, Vite and other react popular libraries to optimize the development process.
 
-<img src="./public/portfolio_home.JPG" alt="Portfolio Screenshot" width=90% style="max-width: 900px;margin: 0 auto;"/>
+<img src="./public/portfolio_home.jpg" alt="Portfolio Screenshot" width=90% style="max-width: 900px;margin: 0 auto;"/>
 
 ## REACT LIBRARIES USED
 
