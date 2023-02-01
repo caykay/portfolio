@@ -1,5 +1,5 @@
 import { Logo } from "../icons";
-import HeaderMenu from "./HeaderMenu";
+import SideMenu from "./SideMenu";
 import { useContext } from "react";
 import { ContentContext, ThemeContext } from "../../context";
 import styled from "styled-components";
@@ -39,7 +39,7 @@ export default function Header({ pageScroll }) {
       <a href="/" className="logo-link">
         <Logo className="logo" />
       </a>
-      <HeaderMenu />
+      <SideMenu />
     </StyledHeader>
   );
 }

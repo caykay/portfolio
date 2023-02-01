@@ -84,7 +84,7 @@ function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
   );
 }
 
-function PopupMenu({ toggleMenu, windowWidth, menuActive }) {
+function SideMenu({ toggleMenu, windowWidth, menuActive }) {
   // Close menu on mobile when link is clicked
   function handleLinkClicked() {
     windowWidth <= 500 && toggleMenu();
@@ -97,9 +97,6 @@ function PopupMenu({ toggleMenu, windowWidth, menuActive }) {
         animate={menuActive ? "open" : "closed"}
         custom={windowWidth}
         variants={popupMenuVariants}
-        onAnimationComplete={(definition) =>
-          console.log("Animation complete", definition)
-        }
         menuActive={menuActive}>
         {/* Pass different motion variants for links in popup menu */}
         <NavLinks
@@ -124,6 +121,17 @@ export default function MenuContainer() {
     width: windowWidth,
   } = useContext(ContentContext);
 
+  // close side menu on window resize
+  useEffect(() => {
+    if (windowWidth > 770) {
+      menuActive && toggleMenu();
+    }
+
+    // disable scroll when menu is active (most effective in mobile)
+    if (menuActive) document.querySelector("body").classList.add("no-scroll");
+    else document.querySelector("body").classList.remove("no-scroll");
+  }, [windowWidth, menuActive]);
+
   return (
     <>
       {windowWidth > 770 ? (
@@ -135,7 +143,7 @@ export default function MenuContainer() {
             handleClick={toggleMenu}
             menuActive={menuActive}
           />
-          <PopupMenu
+          <SideMenu
             menuActive={menuActive}
             toggleMenu={toggleMenu}
             windowWidth={windowWidth}

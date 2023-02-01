@@ -24,7 +24,7 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 
 - ~~Smooth scrolling on clicking nav links~~
 
-- Nav bar animation
+- ~~Nav bar animation~~
 
 - ~~Footer (tech used)~~
 
@@ -33,7 +33,7 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
   - ~~Page load (logo animation)~~
   - components load
     - ~~hero section and side bars (loads differently from other sections)~~
-    - Other sections (reveal when scroll)
+    - ~~Other sections (reveal when scroll)~~
 
 - Different logo sizes and variation
 
@@ -42,3 +42,6 @@ I used ReactJs, Vite and other react popular libraries to optimize the developme
 - Project clean up
   - ~~migrate large css to chunks of styled components~~
   - ~~separate components, styles, hooks, icons, and other assets into respective directories~~
+  - ~~remove unused code~~
+  - document code
+  - structure code

@@ -76,6 +76,19 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const { scrollYProgress } = useScroll();
 
+  // update the scrollprogress state when the scrollYProgress changes
+  useEffect(() => {
+    scrollYProgress.on("change", (n) => updateScrollProgress(n));
+
+    return () => scrollYProgress.destroy();
+  }, []);
+
+  // once initial startup page is done loading
+  function finishLoading() {
+    setPageLoading((loading) => false);
+  }
+
+  // activate/deactivate menu
   function toggleMenu() {
     setMenuActive(!menuActive);
   }
@@ -86,27 +99,6 @@ function App() {
 
   function updateScrollProgress(n) {
     setScrollProgress(n);
-  }
-
-  // close side menu on window resize
-  useEffect(() => {
-    if (width > 770) {
-      setMenuActive(false);
-    }
-
-    // disable scroll when menu is active (most effective in mobile)
-    if (menuActive) document.querySelector("body").classList.add("no-scroll");
-    else document.querySelector("body").classList.remove("no-scroll");
-  }, [width, menuActive]);
-
-  useEffect(() => {
-    scrollYProgress.on("change", (n) => updateScrollProgress(n));
-
-    return () => scrollYProgress.destroy();
-  }, []);
-
-  function finishLoading() {
-    setPageLoading((loading) => false);
   }
 
   return (
