@@ -58,8 +58,15 @@ const StyledHeader = styled.header`
   align-items: center;
   font-size: var(--fs-xs);
   font-family: "PT Mono", monospace;
-  ${({ shadow }) => shadow && "box-shadow: 0 0 0.75rem -0.2rem #000000;"}
+
+  ${({ shadow }) =>
+    shadow &&
+    "box-shadow: 0 0 0.75rem -0.2rem #000000; height:calc(var(--header-height) - 20px);"}
+
+  transition: height 0.25s ease-in;
+
   z-index: 100;
+
   .logo {
     flex-shrink: 0;
     width: 40px;

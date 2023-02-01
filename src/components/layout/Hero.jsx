@@ -100,9 +100,10 @@ const StyledHero = styled.section`
     max-width: 520px;
   }
 
-  @media (max-height: 500px), (max-width: 450px) {
+  @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     min-height: auto;
     height: auto;
+    padding-top: var(--header-height);
   }
 `;
 

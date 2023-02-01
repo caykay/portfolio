@@ -35,6 +35,6 @@ export const variables = css`
     --fs-xxl: 1.375rem;
     --fs-heading: 1.75rem;
 
-    --header-height: 70px;
+    --header-height: 90px;
   }
 `;

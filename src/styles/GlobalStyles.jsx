@@ -94,13 +94,15 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     ::-webkit-scrollbar {
-        width: 20px;
+        width: 14px;
     }
 
     ::-webkit-scrollbar-thumb {
         background: var(--scrollbar-thumb);
-        border-radius: 10px;
-        border: 7px solid rgba(0, 0, 0, 0);
+        border-radius: 999px;
+        border: 4px solid rgba(0, 0, 0, 0);
+        
+
         background-clip: padding-box;
     }
 
