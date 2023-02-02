@@ -5,6 +5,7 @@ import { ContentContext, ThemeContext } from "../../context";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { ACTION_TYPES } from "../../App";
+import ToggleBtn from "./ToggleBtn";
 
 const variants = {
   hidden: {
@@ -22,7 +23,7 @@ const variants = {
 
 export default function Header({ pageScroll }) {
   const { menuActive, dispatch } = useContext(ContentContext);
-  const { reducedMotion } = useContext(ThemeContext);
+  const { reducedMotion, darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
     <StyledHeader
@@ -35,10 +36,16 @@ export default function Header({ pageScroll }) {
         dispatch({ type: ACTION_TYPES.NAV_DONE })
       }
       menuActive={menuActive}
-      shadow={pageScroll > 0 ? true : false}>
+      shadow={pageScroll > 0 ? true : false}
+    >
       <a href="/" className="logo-link">
         <Logo className="logo" />
       </a>
+      <ToggleBtn
+        text={`${darkMode ? "Dark " : "Light"}`}
+        handleClick={toggleDarkMode}
+        active={darkMode}
+      />
       <SideMenu />
     </StyledHeader>
   );

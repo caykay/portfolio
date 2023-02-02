@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useState, useEffect, useReducer } from "react";
 import { ThemeContext, ContentContext } from "./context";
-import { useReducedMotion, useWindowDimensions } from "./hooks";
+import {
+  usePrefersColorScheme,
+  useReducedMotion,
+  useWindowDimensions,
+} from "./hooks";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { LoadingPage, MainContent, Header, Footer } from "./components/layout";
 import { MotionConfig, useScroll } from "framer-motion";
@@ -60,11 +64,17 @@ function getInitialStates(isMotionReduced) {
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [themeColor, setThemeColor] = useState("rgb(35, 147, 227)");
   const [pageLoading, setPageLoading] = useState(true);
 
   const { width } = useWindowDimensions();
+  // initial darkmode state is defined by the current system settings
+  const initDarkMode = usePrefersColorScheme();
+  const [darkMode, setDarkMode] = useState(() => {
+    // return theme stored in storage if exists
+    return localStorage.getItem("darkMode") || initDarkMode;
+  });
+
   const reducedMotion = useReducedMotion();
   // animation statuses for (nav, hero and socials (if on side))
   const [animStates, dispatch] = useReducer(
@@ -110,9 +120,10 @@ function App() {
           url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=PT+Mono&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
         </style>
       </Helmet>
-      <GlobalStyles primaryColor={themeColor} />
+      <GlobalStyles primaryColor={themeColor} darkMode={darkMode} />
       <ThemeContext.Provider
-        value={{ darkMode, toggleDarkMode, themeColor, reducedMotion }}>
+        value={{ darkMode, toggleDarkMode, themeColor, reducedMotion }}
+      >
         {/* activate loading page is the page is loaded */}
         {pageLoading && <LoadingPage finishLoading={finishLoading} />}
 
@@ -127,7 +138,8 @@ function App() {
                   width,
                   animStates,
                   dispatch,
-                }}>
+                }}
+              >
                 <Header pageScroll={scrollProgress} />
                 <MainContent />
                 <Footer />
