@@ -23,6 +23,7 @@ export const variables = css`
         : "rgba(35, 147, 227, 0.2)"};
     --secondary-color: rgb(163, 168, 195);
     --tertiary-color: rgb(255, 255, 255);
+    --project-description-color: rgba(20, 23, 60, 0.97);
     --scrollbar-thumb: rgba(255, 255, 255, 0.3);
     --popup-menu-bg: rgb(26, 19, 54);
 

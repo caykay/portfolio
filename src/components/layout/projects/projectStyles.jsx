@@ -89,13 +89,14 @@ const StyledProjectItem = styled.div`
     .project-item--info--description {
       max-width: 500px;
       color: var(--secondary-color);
-      background: var(--bg-color-secondary);
+      background: var(--project-description-color, rgba(30, 20, 60));
       padding: 20px;
       border-radius: 5px;
       font-size: var(--fs-md);
 
       @media Screen and (min-width: 770px) {
         box-shadow: 0 5px 0.5rem -0.2rem rgba(0, 0, 0, 0.5);
+        font-size: var(--fs-sm);
       }
     }
 
