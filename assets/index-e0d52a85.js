@@ -67,6 +67,7 @@ Error generating stack: `+o.message+`
     --primary-color-light: ${({primaryColor:e})=>e?`rgba(${kp(e)}, 0.2)`:"rgba(35, 147, 227, 0.2)"};
     --secondary-color: rgb(163, 168, 195);
     --tertiary-color: rgb(255, 255, 255);
+    --project-description-color: rgba(20, 23, 60, 0.97);
     --scrollbar-thumb: rgba(255, 255, 255, 0.3);
     --popup-menu-bg: rgb(26, 19, 54);
 
@@ -600,13 +601,14 @@ Error generating stack: `+o.message+`
     .project-item--info--description {
       max-width: 500px;
       color: var(--secondary-color);
-      background: var(--bg-color-secondary);
+      background: var(--project-description-color, rgba(30, 20, 60));
       padding: 20px;
       border-radius: 5px;
       font-size: var(--fs-md);
 
       @media Screen and (min-width: 770px) {
         box-shadow: 0 5px 0.5rem -0.2rem rgba(0, 0, 0, 0.5);
+        font-size: var(--fs-sm);
       }
     }
 
