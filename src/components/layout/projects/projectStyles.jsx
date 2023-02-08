@@ -59,7 +59,7 @@ const StyledProjectItem = styled.div`
     @media screen and (min-width: 770px) {
       a:hover {
         img {
-          filter: grayscale(0%) contrast(1);
+          filter: grayscale(0%) contrast(1) brightness(80%);
           mix-blend-mode: normal;
         }
         &::before {

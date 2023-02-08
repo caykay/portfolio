@@ -123,8 +123,8 @@ function Socials() {
     //   link: "https://discordapp.com/users/558883203872587786/",
     //   icon: <FaDiscord />,
     // },
-    { link: "https://www.instagram.com/_.cassian/", icon: <FaInstagram /> },
-    { link: "https://twitter.com/caykay2", icon: <FaTwitter /> },
+    // { link: "https://www.instagram.com/_.cassian/", icon: <FaInstagram /> },
+    // { link: "https://twitter.com/caykay2", icon: <FaTwitter /> },
     { link: "https://codepen.io/caykay", icon: <FaCodepen /> },
   ];
 
