@@ -1,8 +1,82 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ContentContext } from "../../context";
 import { MenuIcon } from "../icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import ThemeBtn from "./ThemeBtn";
+
+// STYLED COMPONENTS
+const StyledNavLinks = styled.ol`
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: item 0;
+  .nav-link a {
+    display: flex;
+    gap: 10px;
+    color: var(--secondary-color);
+    counter-increment: item 1;
+    &::before {
+      content: "0" counter(item) ".";
+      color: var(--primary-color);
+    }
+  }
+
+  .resume-btn {
+    padding: 0.5rem 1rem;
+  }
+`;
+
+const StlyedPopupMenu = styled.aside`
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 40px;
+  padding-top: calc(40px + var(--header-height));
+  height: 100vh;
+  width: 50%;
+  background: var(--popup-menu-bg, #112240);
+  z-index: 2;
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--fs-lg);
+    a {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .resume-btn {
+      padding: 1rem 2.5rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    background: var(--bg-color);
+    .nav-links {
+      a {
+        color: var(--tertiary-color);
+      }
+    }
+  }
+`;
+
+// a veil is what obstructs all content when a side menu is active
+// also when clicked the closes the pop menu and makes content available
+const StyledPopupVeil = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+`;
 
 // default variants for links motion
 const defaultVariants = {
@@ -12,30 +86,28 @@ const defaultVariants = {
     y: -100,
   },
 
-  visible: (custom) => ({
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
       ease: "anticipate",
       duration: 0.3,
-      // delay: custom * 0.1,
     },
-  }),
+  },
 };
 
 const popupMenuVariants = {
-  open: (width) => ({
+  open: {
     clipPath: `circle(200% at 86% 4.5%)`,
     transition: {
-      // when: "beforeChildren",
       type: "spring",
       stiffness: 40,
       restDelta: 2,
       delayChildren: 0.2,
     },
-  }),
+  },
 
-  closed: (width) => ({
+  closed: {
     clipPath: `circle(0% at 86% 4.5%)`,
     transition: {
       // delay: 0.5,
@@ -43,7 +115,7 @@ const popupMenuVariants = {
       stiffness: 35,
       // restDelta: 2,
     },
-  }),
+  },
 };
 
 // motion variants for links when in popup menu
@@ -61,6 +133,9 @@ const popupMenuLinksVariants = {
   },
 };
 
+// custom resume btn with fade in animation along side the nav links
+const ResumeBtn = motion(ThemeBtn);
+
 function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
   const links = ["about", "projects", "contact"];
   const { animStates } = useContext(ContentContext);
@@ -71,6 +146,7 @@ function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
       {links &&
         links.map((link, i) => (
           <motion.li
+            className="nav-link"
             initial={!navDone ? undefined : false} // do not reanimate if not in popup menu
             key={link}
             custom={i}
@@ -80,6 +156,14 @@ function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
             </a>
           </motion.li>
         ))}
+      <ResumeBtn
+        className="resume-btn"
+        btnText="Resume"
+        link="/resume.pdf"
+        initial={!navDone ? undefined : false}
+        custom={links.length}
+        variants={variants}
+      />
     </StyledNavLinks>
   );
 }
@@ -95,7 +179,6 @@ function SideMenu({ toggleMenu, windowWidth, menuActive }) {
         as={motion.aside}
         initial={false}
         animate={menuActive ? "open" : "closed"}
-        custom={windowWidth}
         variants={popupMenuVariants}
         menuActive={menuActive}>
         {/* Pass different motion variants for links in popup menu */}
@@ -153,70 +236,3 @@ export default function MenuContainer() {
     </>
   );
 }
-
-const StyledNavLinks = styled.ol`
-  display: flex;
-  gap: 40px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: item 0;
-  a {
-    display: flex;
-    gap: 10px;
-    color: var(--secondary-color);
-    counter-increment: item 1;
-    &::before {
-      content: "0" counter(item) ".";
-      color: var(--primary-color);
-    }
-  }
-`;
-
-const StlyedPopupMenu = styled.aside`
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 40px;
-  padding-top: calc(40px + var(--header-height));
-  height: 100vh;
-  width: 50%;
-  background: var(--popup-menu-bg, #112240);
-  z-index: 2;
-  /* transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out; */
-
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    font-size: var(--fs-lg);
-    a {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  @media (max-width: 500px) {
-    width: 100%;
-    background: var(--bg-color);
-    .nav-links {
-      a {
-        color: var(--tertiary-color);
-      }
-    }
-  }
-
-  /* ${(props) =>
-    props.menuActive && "transform: translateX(0); visibility: visible;"} */
-`;
-
-const StyledPopupVeil = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-`;

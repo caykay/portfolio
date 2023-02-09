@@ -8,6 +8,7 @@ import {
   FaReact,
   FaNodeJs,
 } from "react-icons/fa";
+import { SiMongodb } from "react-icons/si";
 import { SiCsharp } from "react-icons/si";
 import { makeFadeEnter } from "../motions";
 
@@ -20,7 +21,7 @@ const StyledAboutMe = styled.section`
   .about--content {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: 3fr 2fr;
     grid-template-rows: auto;
     gap: 50px;
     justify-items: space-between;
@@ -88,22 +89,12 @@ const StyledAboutMe = styled.section`
   }
 `;
 
-const CustomAboutMe = makeFadeEnter(StyledAboutMe);
-
-function AboutMe() {
-  return (
-    <CustomAboutMe id="about">
-      <StyledHeading className="section-title">About Me</StyledHeading>
-      <AboutMeContent />
-    </CustomAboutMe>
-  );
-}
-
 function AboutMeContent() {
   const techStack = [
     { name: "JavaScript", icon: <FaJs /> },
     { name: "React", icon: <FaReact /> },
     { name: "NodeJs", icon: <FaNodeJs /> },
+    { name: "MongoDB", icon: <SiMongodb /> },
     { name: "Python", icon: <FaPython /> },
     { name: "C#", icon: <SiCsharp /> },
     { name: "Github", icon: <FaGithub /> },
@@ -114,11 +105,8 @@ function AboutMeContent() {
       <div className="about--text">
         <p>
           Hello there, My name is Cassian Kahema, a recent software engineering
-          graduate from the{" "}
-          <a href="https://www.unisa.edu.au/" target="_blank">
-            University of South Australia
-          </a>
-          . Watching Hacking and Cyber Security Movies and TV Shows like{" "}
+          graduate based in Adelaide, South Australia. Watching Hacking and
+          Cyber Security related Movies and TV Shows like{" "}
           <a
             href="https://en.wikipedia.org/wiki/Nikita_(TV_series)"
             target="_blank">
@@ -144,7 +132,7 @@ function AboutMeContent() {
           developer and I am excited to bring my knowledge and expertise to any
           project.{" "}
         </p>
-        <p>Tech Stack and Technologies (competent):</p>
+        <p>Tech Stack and Technologies:</p>
         <ul className="about--tech-stack">
           {techStack.map((tech) => (
             <li key={tech.name}>
@@ -158,6 +146,17 @@ function AboutMeContent() {
         {/* <img src="/prof_pic.jpg" alt="profile photo" /> */}
       </div>
     </div>
+  );
+}
+
+const CustomAboutMe = makeFadeEnter(StyledAboutMe);
+
+function AboutMe() {
+  return (
+    <CustomAboutMe id="about">
+      <StyledHeading className="section-title">About Me</StyledHeading>
+      <AboutMeContent />
+    </CustomAboutMe>
   );
 }
 

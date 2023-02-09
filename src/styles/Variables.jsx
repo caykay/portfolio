@@ -13,6 +13,7 @@ export const variables = css`
     --bg-color-secondary: rgba(30, 20, 60);
     --bg-color-secondary-light: rgba(30, 20, 60, 0.88);
     --project-photo-veil: rgba(0, 0, 0, 0.5);
+    /* dynamically set the primary color */
     --primary-color: ${({ primaryColor }) =>
       primaryColor
         ? `rgba(${extractRGBValues(primaryColor)})`
@@ -21,6 +22,7 @@ export const variables = css`
       primaryColor
         ? `rgba(${extractRGBValues(primaryColor)}, 0.2)`
         : "rgba(35, 147, 227, 0.2)"};
+
     --secondary-color: rgb(163, 168, 195);
     --tertiary-color: rgb(255, 255, 255);
     --project-description-color: rgba(20, 23, 60, 0.97);

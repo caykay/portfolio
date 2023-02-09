@@ -1,10 +1,49 @@
 import styled from "styled-components";
-import { ContactBtn } from "./Contact";
+import ContactBtn from "./ThemeBtn";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useContext, useEffect, useState } from "react";
 import { ContentContext, ThemeContext } from "../../context";
 import { ACTION_TYPES } from "../../App";
+
+const StyledHero = styled.section`
+  min-height: 100vh;
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  .welcome {
+    font-family: "PT Mono", monospace;
+  }
+  .name {
+    color: var(--tertiary-color);
+  }
+  .title {
+    color: var(--secondary-color);
+    margin-top: 10px;
+  }
+  .summary {
+    color: var(--secondary-color);
+    max-width: 520px;
+  }
+
+  @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
+    min-height: auto;
+    height: auto;
+    padding-top: var(--header-height);
+  }
+`;
+
+const StyledTitle = styled.div`
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 1.1;
+
+  font-weight: 600;
+`;
 
 // https://www.framer.com/motion/animation/##propagation
 // todo: usePreferedReducedMotion hook from framer-motion
@@ -70,46 +109,12 @@ export default function Hero(props) {
         and expertise to any project in the web development field. Thank you for
         visiting. */}
       </motion.p>
-      <CustomBtn btnText={"Contact Me"} variants={childVariants} />
+      <CustomBtn
+        className="contact-btn"
+        btnText={"Contact Me"}
+        link="mailto:kahemacassian@gmail.com"
+        variants={childVariants}
+      />
     </StyledHero>
   );
 }
-
-const StyledHero = styled.section`
-  min-height: 100vh;
-  height: 100vh;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  .welcome {
-    font-family: "PT Mono", monospace;
-  }
-  .name {
-    color: var(--tertiary-color);
-  }
-  .title {
-    color: var(--secondary-color);
-    margin-top: 10px;
-  }
-  .summary {
-    color: var(--secondary-color);
-    max-width: 520px;
-  }
-
-  @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
-    min-height: auto;
-    height: auto;
-    padding-top: var(--header-height);
-  }
-`;
-
-const StyledTitle = styled.div`
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  line-height: 1.1;
-
-  font-weight: 600;
-`;

@@ -56,7 +56,7 @@ export const GlobalStyles = createGlobalStyle`
         left: 50%;
         transform: translateX(-50%);
         width: 0%;
-        height: 2px;
+        height: 1px;
         background: var(--primary-color);
         border-radius: 10px;
         transition: width 0.2s ease-in-out;
@@ -98,7 +98,8 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     ::-webkit-scrollbar-thumb {
-        background: var(--scrollbar-thumb);
+        background: var(--primary-color, --scrollbar-thumb);
+        opacity: 0.8;
         border-radius: 999px;
         border: 4px solid rgba(0, 0, 0, 0);
         

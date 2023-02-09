@@ -1,7 +1,6 @@
-import { forwardRef } from "react";
 import styled from "styled-components";
-import { StyledBtn } from "../../styles/Styles";
 import { makeFadeEnter } from "../motions";
+import ContactBtn from "./ThemeBtn";
 
 const StyledContact = styled.section`
   display: flex;
@@ -20,15 +19,6 @@ const StyledContact = styled.section`
   }
 `;
 
-const ContactBtn = forwardRef((props, ref) => {
-  const { btnText } = props;
-  return (
-    <a href="mailto:kahemacassian@gmail.com" ref={ref}>
-      <StyledBtn className="contact--btn">{btnText}</StyledBtn>
-    </a>
-  );
-});
-
 const CustomStyledContact = makeFadeEnter(StyledContact);
 
 function Contact() {
@@ -44,9 +34,13 @@ function Contact() {
         to me if you have any questions, want to work on an interesting project
         or if you would like to discuss potential job opportunities.
       </p>
-      <ContactBtn btnText="Say Hello!" />
+      <ContactBtn
+        className="contact-btn"
+        btnText="Say Hello!"
+        link="mailto:kahemacassian@gmail.com"
+      />
     </CustomStyledContact>
   );
 }
 
-export { Contact as default, ContactBtn };
+export { Contact as default };
