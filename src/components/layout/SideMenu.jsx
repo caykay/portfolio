@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { ContentContext } from "../../context";
+import { ContentContext, ThemeContext } from "../../context";
 import { MenuIcon } from "../icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -110,27 +110,26 @@ const popupMenuVariants = {
   closed: {
     clipPath: `circle(0% at 86% 4.5%)`,
     transition: {
-      // delay: 0.5,
       type: "spring",
       stiffness: 35,
-      // restDelta: 2,
     },
   },
 };
 
 // motion variants for links when in popup menu
 const popupMenuLinksVariants = {
-  open: (i) => ({
+  open: ({ index }) => ({
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * 0.1,
+      delay: index * 0.1,
     },
   }),
-  closed: {
-    y: 50,
+
+  closed: ({ reducedMotion }) => ({
+    y: reducedMotion ? 0 : 50,
     opacity: 0,
-  },
+  }),
 };
 
 // custom resume btn with fade in animation along side the nav links
@@ -140,6 +139,7 @@ function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
   const links = ["about", "projects", "contact"];
   const { animStates } = useContext(ContentContext);
   const { navDone } = animStates;
+  const { reducedMotion } = useContext(ThemeContext);
 
   return (
     <StyledNavLinks className="nav-links" menuActive={menuActive}>
@@ -149,7 +149,7 @@ function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
             className="nav-link"
             initial={!navDone ? undefined : false} // do not reanimate if not in popup menu
             key={link}
-            custom={i}
+            custom={{ index: i, reducedMotion }}
             variants={variants}>
             <a href={`#${link}`} onClick={handleLinkClick}>
               {link[0].toUpperCase() + link.slice(1)}
@@ -161,7 +161,7 @@ function NavLinks({ menuActive, handleLinkClick, variants = defaultVariants }) {
         btnText="Resume"
         link="/resume.pdf"
         initial={!navDone ? undefined : false}
-        custom={links.length}
+        custom={{ index: links.length, reducedMotion }}
         variants={variants}
       />
     </StyledNavLinks>
@@ -173,11 +173,15 @@ function SideMenu({ toggleMenu, windowWidth, menuActive }) {
   function handleLinkClicked() {
     windowWidth <= 500 && toggleMenu();
   }
+
+  const { reducedMotion } = useContext(ThemeContext);
+
   return (
     <>
       <StlyedPopupMenu
         as={motion.aside}
         initial={false}
+        custom={reducedMotion}
         animate={menuActive ? "open" : "closed"}
         variants={popupMenuVariants}
         menuActive={menuActive}>

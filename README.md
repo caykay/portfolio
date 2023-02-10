@@ -1,6 +1,6 @@
 # [My Personal Portfolio](https://cassiankahema.com)
 
-A portfolio ([cassiankahema.com](https://cassiankahema.com)) I made based off of Brittany Chiang's design.
+A portfolio ([cassiankahema.com](https://cassiankahema.com)) I made based off of [Brittany Chiang's](https://brittanychiang.com) portfolio design.
 
 I used ReactJs, Vite and other react popular libraries to optimize the development process.
 

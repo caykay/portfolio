@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import ContactBtn from "./ThemeBtn";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ContentContext, ThemeContext } from "../../context";
 import { ACTION_TYPES } from "../../App";
 
