@@ -9,7 +9,7 @@ import {
   FaNodeJs,
 } from "react-icons/fa";
 import { SiMongodb } from "react-icons/si";
-import { SiCsharp } from "react-icons/si";
+import { SiCsharp, SiCplusplus } from "react-icons/si";
 import { makeFadeEnter } from "../motions";
 
 const StyledAboutMe = styled.section`
@@ -92,11 +92,12 @@ const StyledAboutMe = styled.section`
 function AboutMeContent() {
   const techStack = [
     { name: "JavaScript", icon: <FaJs /> },
+    { name: "C++", icon: <SiCplusplus /> },
+    { name: "Python", icon: <FaPython /> },
+    { name: "C#", icon: <SiCsharp /> },
     { name: "React", icon: <FaReact /> },
     { name: "NodeJs", icon: <FaNodeJs /> },
     { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "Python", icon: <FaPython /> },
-    { name: "C#", icon: <SiCsharp /> },
     { name: "Github", icon: <FaGithub /> },
     { name: "Figma", icon: <FaFigma /> },
   ];
@@ -127,11 +128,11 @@ function AboutMeContent() {
           cameras, If this interests you and you wish to collaborate feel free
           to reach out through any of my <a href="#contact">contacts</a>.
         </p> */}
-        <p>
+        {/* <p>
           I am currently looking for a full-time position as a software
           developer and I am excited to bring my knowledge and expertise to any
           project.{" "}
-        </p>
+        </p> */}
         <p>Tech Stack and Technologies:</p>
         <ul className="about--tech-stack">
           {techStack.map((tech) => (

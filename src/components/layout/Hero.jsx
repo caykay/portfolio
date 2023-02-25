@@ -98,12 +98,13 @@ export default function Hero(props) {
           Cassian Kahema.
         </StyledTitle>
         <StyledTitle as={motion.div} className="title" variants={childVariants}>
-          A Graduate Software developer.
+          A Software Engineer.
         </StyledTitle>
       </div>
       <motion.p className="summary" variants={childVariants}>
-        I am a software developer with a passion for web development, back-end
-        technologies and image processing, specifically OCR tools.
+        I am a software engineer with a passion for application and web
+        development, back-end technologies and image processing, specifically
+        OCR tools.
         {/* I am excited to bring my knowledge
         and expertise to any project in the web development field. Thank you for
         visiting. */}

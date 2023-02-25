@@ -31,8 +31,9 @@ function Contact() {
           color: "var(--secondary-color)",
         }}>
         Thank you for visiting my portfolio. Please don't hesitate to reach out
-        to me if you have any questions, want to work on an interesting project
-        or if you would like to discuss potential job opportunities.
+        to me if you have any questions or would like to work on an interesting
+        project.
+        {/* {or if you would like to discuss potential job opportunities.} */}
       </p>
       <ContactBtn
         className="contact-btn"
