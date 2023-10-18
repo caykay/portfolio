@@ -221,6 +221,7 @@ Error generating stack: `+o.message+`
       --delay: 200ms;
       --duration: 200ms;
       transform-origin: center;
+      -webkit-transform-origin: center;
     }
 
     .hidden {
@@ -229,10 +230,6 @@ Error generating stack: `+o.message+`
   }
 
   .close-menu {
-    .icon-line {
-      y: 65;
-    }
-
     .icon-line.middle,
     .icon-line.bottom,
     .dot {
@@ -240,7 +237,7 @@ Error generating stack: `+o.message+`
     }
 
     .icon-line.top {
-      transform: rotate(225deg);
+      transform: rotate(225deg) translateY(50px);
     }
 
     .icon-line.hidden {
