@@ -22,6 +22,7 @@ const StyledMenuIcon = styled.button`
       --delay: 200ms;
       --duration: 200ms;
       transform-origin: center;
+      -webkit-transform-origin: center;
     }
 
     .hidden {
@@ -30,10 +31,6 @@ const StyledMenuIcon = styled.button`
   }
 
   .close-menu {
-    .icon-line {
-      y: 65;
-    }
-
     .icon-line.middle,
     .icon-line.bottom,
     .dot {
@@ -41,7 +38,7 @@ const StyledMenuIcon = styled.button`
     }
 
     .icon-line.top {
-      transform: rotate(225deg);
+      transform: rotate(225deg) translateY(50px);
     }
 
     .icon-line.hidden {
@@ -80,8 +77,7 @@ export default function MenuIcon({ handleClick, menuActive }) {
         // height="107"
         viewBox="0 0 185 150"
         fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <rect
           className="icon-line top"
           x="17.5"
