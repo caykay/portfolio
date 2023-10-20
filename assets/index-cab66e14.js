@@ -99,12 +99,14 @@ Error generating stack: `+o.message+`
 
     body {
         height: 100vh;
+        width: max(100vw, 100%); // exclude scrollbar width
+        overflow-x: hidden; // hide horizontal scrollbar
         margin: 0;
         background: var(--bg-color);
         font-family: "Inter", "Poppins", sans-serif;
         font-size: var(--fs-xl);
 
-        overflow: overlay;
+        overflow-y: overlay;
         overscroll-behavior: none;
 
         line-height: 1.5;
@@ -307,11 +309,11 @@ Error generating stack: `+o.message+`
 `,Z7=De.aside`
   position: fixed;
   top: 0;
-  right: 0;
+  right: calc(0% - (100vw - 100%));
   padding: 40px;
   padding-top: calc(40px + var(--header-height));
   height: 100vh;
-  width: 50%;
+  width: 50vw;
   background: var(--popup-menu-bg, #112240);
   z-index: 2;
 
@@ -350,7 +352,7 @@ Error generating stack: `+o.message+`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   padding: 0 40px;
   background: var(--bg-color-light);
   backdrop-filter: blur(8px);
