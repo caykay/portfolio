@@ -48,7 +48,7 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   padding: 0 40px;
   background: var(--bg-color-light);
   backdrop-filter: blur(8px);

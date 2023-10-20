@@ -33,11 +33,11 @@ const StyledNavLinks = styled.ol`
 const StlyedPopupMenu = styled.aside`
   position: fixed;
   top: 0;
-  right: 0;
+  right: calc(0% - (100vw - 100%));
   padding: 40px;
   padding-top: calc(40px + var(--header-height));
   height: 100vh;
-  width: 50%;
+  width: 50vw;
   background: var(--popup-menu-bg, #112240);
   z-index: 2;
 

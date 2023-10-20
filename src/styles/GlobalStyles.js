@@ -17,12 +17,14 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         height: 100vh;
+        width: max(100vw, 100%); // exclude scrollbar width
+        overflow-x: hidden; // hide horizontal scrollbar
         margin: 0;
         background: var(--bg-color);
         font-family: "Inter", "Poppins", sans-serif;
         font-size: var(--fs-xl);
 
-        overflow: overlay;
+        overflow-y: overlay;
         overscroll-behavior: none;
 
         line-height: 1.5;
